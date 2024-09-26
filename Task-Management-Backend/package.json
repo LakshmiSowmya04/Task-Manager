@@ -1,0 +1,17 @@
+{
+  "name": "task-management-backend",
+  "version": "1.0.0",
+  "description": "task manager that allows users to create projects and tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lakshmi Sowmya",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.6.3",
+    "nodemon": "^3.1.7"
+  }
+}
