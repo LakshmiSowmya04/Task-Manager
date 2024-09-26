@@ -22,10 +22,8 @@ step 2 : npm start
 ## Contributing
 We welcome contributions to this project! Please follow these guidelines:
 
-1)Fork the repository and create your branch from main.
-2)Make your changes and ensure your code is well-documented.
-3)Submit a pull request detailing your changes.
+- Fork the repository and create your branch from main.
+- Make your changes and ensure your code is well-documented.
+- Submit a pull request detailing your changes.
 
-   ```bash
-   git clone https://github.com/yourusername/task-manager.git
-   cd task-manager/backend
+ 
