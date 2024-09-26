@@ -21,9 +21,17 @@ step 2 : npm start
 
 ## Contributing
 We welcome contributions to this project! Please follow these guidelines:
-
 - Fork the repository and create your branch from main.
 - Make your changes and ensure your code is well-documented.
 - Submit a pull request detailing your changes.
+
+ ### Only frontend guidelines
+   - If you would like to make only changes in front end please feel free to clone it and make changes only to "task-management-frontend" folder.people who are beginneres and who are not aware of react can make feature in HTML,CSS,JS and make PR
+
+   - fork
+   - git clone {url}
+   - npm install
+   - npm start
+
 
  
