@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const project = new Project(req.body);
+  console.log(req.body);
   try {
     await project.save();
     res.status(201).send(project);
