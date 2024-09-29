@@ -31,6 +31,7 @@ We welcome contributions to this project! Please follow these guidelines:
 
  ### Only frontend guidelines
    - If you would like to make only changes in front end please feel free to clone it and make changes only to "task-management-frontend" folder.people who are beginneres and who are not aware of react can make feature in HTML,CSS,JS and make PR
+   - PLEASE MAKE SURE ADD AN ATTACHEMENTS AFTER DOING CHANGES IN FRONTEND
 
    - fork
    - git clone {url}
