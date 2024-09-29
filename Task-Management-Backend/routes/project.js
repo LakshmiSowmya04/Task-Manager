@@ -1,21 +1,10 @@
 const express = require("express");
-const Project = require("../models/Project");
+const ProjectController = require("../controllers/project-controller");
 const router = express.Router();
+const AuthMiddleware = require("../middlewares/auth-middleware");
 
-router.post("/", async (req, res) => {
-  const project = new Project(req.body);
-  console.log(req.body);
-  try {
-    await project.save();
-    res.status(201).send(project);
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
+router.post("/", AuthMiddleware, ProjectController.create);
 
-router.get("/", async (req, res) => {
-  const projects = await Project.find();
-  res.send(projects);
-});
+router.get("/", AuthMiddleware, ProjectController.get);
 
 module.exports = router;
