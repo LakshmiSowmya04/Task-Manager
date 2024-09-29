@@ -1,6 +1,9 @@
-const express = require("express");
-const Task = require("../models/Task");
+import express from "express";
+import dotenv from "dotenv";
+
+import Task from "../models/Task.js"
 const router = express.Router();
+dotenv.config();
 
 router.post("/", async (req, res) => {
   const task = new Task(req.body);
@@ -17,4 +20,4 @@ router.get("/", async (req, res) => {
   res.send(tasks);
 });
 
-module.exports = router;
+export default router;

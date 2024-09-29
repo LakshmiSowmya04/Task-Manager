@@ -1,17 +1,26 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const projectsRouter = require("./routes/project");
-const tasksRouter = require("./routes/tasks");
+import express from "express"
+import mongoose from "mongoose";
+import dotenv from "dotenv"
+import cors from "cors"
+
+import projectsRouter from "./routes/project.js"
+import tasksRouter from "./routes/tasks.js"
+import userRouter from "./routes/user.js"
+
 const app = express();
-const cors = require("cors");
+
+dotenv.config();
+const PORT=process.env.PORT;
+const CONNECTION_URL=process.env.CONNECTION_URL
 
 app.use(express.json());
 app.use(cors());
 app.use("/projects", projectsRouter);
 app.use("/tasks", tasksRouter);
+app.use("/user", userRouter);
 
 mongoose
-  .connect("mongodb://localhost:27017/taskmanager", {
+  .connect(CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -22,6 +31,6 @@ mongoose
     console.error("MongoDB connection error:", err);
   });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

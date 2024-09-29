@@ -1,5 +1,5 @@
-const express = require("express");
-const Project = require("../models/Project");
+import express from "express"
+import Project from "../models/Project.js"
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -18,4 +18,4 @@ router.get("/", async (req, res) => {
   res.send(projects);
 });
 
-module.exports = router;
+export default router;
