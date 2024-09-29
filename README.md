@@ -1,4 +1,5 @@
-# This repository is participating in hacktoberfest
+# This repository is participating in hacktoberfest ![image](https://github.com/user-attachments/assets/c666630c-1de4-471d-b7c5-7f273f3d11b8)
+
 
 # Task Management App
 A simple task management application built using the MERN stack (MongoDB, Express, React, Node.js). This app allows users to create projects and tasks, set deadlines, prioritize tasks, and manage their status. Under each project, we can have small sub-tasks and based on priority we can complete the tasks
