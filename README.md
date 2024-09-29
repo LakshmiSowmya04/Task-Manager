@@ -15,9 +15,11 @@ A simple task management application built using the MERN stack (MongoDB, Expres
 - Node.js (v12 or higher)
 - MongoDB installed locally or use a cloud MongoDB service
 
+### Communication Channel : https://discord.gg/nxD63YsJ
+
 ### frontend Installation
-step 1 : npm install
-step 2 : npm start
+- step 1 : npm install
+- step 2 : npm start
 
 ## Contributing
 We welcome contributions to this project! Please follow these guidelines:
