@@ -46,7 +46,7 @@ const ProjectForm = ({ setProjects }) => {
         required
       />
 
-      <button type="submit">Add Project</button>
+      <button className="submit" type="submit">Add Project</button>
     </form>
     <ToastContainer/>
     </>

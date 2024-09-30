@@ -70,7 +70,7 @@ const TaskForm = ({ projects, setTasks, setTaskCount}) => {
         <option value="Completed">Completed</option>
       </select>
 
-      <button type="submit">Add Task</button>
+      <button className="submit" type="submit">Add Task</button>
     </form>
      <ToastContainer />
     </>

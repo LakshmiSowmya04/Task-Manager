@@ -81,11 +81,11 @@ li {
 }
 
 li:hover {
-  background-color: #808080; /* Gray hover effect for items */
+  background-color: #4e4b4b; /* Gray hover effect for items */
 }
 
 .toggle-button {
-  background-color: #808080; /* Gray button */
+  background-color: #3b3939; /* Gray button */
   color: #FFFFFF; /* White text */
   padding: 12px 20px;
   border: none;
@@ -96,7 +96,7 @@ li:hover {
 }
 
 .toggle-button:hover {
-  background-color: #A9A9A9; /* Dim gray hover */
+  background-color: #4e4b4b; /* Dim gray hover */
 }
 
 .toggle-button:focus {
@@ -175,4 +175,22 @@ button:hover {
 
 .project-item:hover .project-description {
   display: block; /* Show description on hover */
+}
+
+.close
+{
+  background-color: rgb(149, 14, 14) !important;
+}
+.close:hover
+{
+  background-color: rgb(255, 0, 0) !important;
+}
+.submit
+{
+  background-color: rgb(67, 8, 67) !important;
+  width: 30% !important;
+}
+.submit:hover
+{
+  background-color: rgb(255, 0, 255) !important;
 }

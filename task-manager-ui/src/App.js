@@ -52,7 +52,7 @@ const App = () => {
        <div className="section projects-section">
         <div className="section2">
         <button
-          className="toggle-button"
+          className={`toggle-button ${showProjectForm ? "close" : null}`}
           onClick={() => setShowProjectForm(!showProjectForm)}
         >
           {showProjectForm ? "Close Form" : "Add Project"}
@@ -75,7 +75,7 @@ const App = () => {
        <div className="section tasks-section">
          <div className="section2">
         <button
-          className="toggle-button"
+          className={`toggle-button ${showTaskForm ? "close" : null}`}
           onClick={() => setShowTaskForm(!showTaskForm)}
         >
           {showTaskForm ? "Close Form" : "Add Task"}
