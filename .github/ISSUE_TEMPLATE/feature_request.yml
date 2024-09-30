@@ -19,9 +19,6 @@ body:
     validations:
       required: true
 
-- type: checkboxes
-    id: terms
-    attributes:
       label: Record
       options:
         - label: "I agree to follow this project's Code of Conduct"
