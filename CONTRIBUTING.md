@@ -46,11 +46,3 @@ If you have any questions, feel free to open an issue or contact the maintainers
 
 Thank you for your contributions and happy coding!
 
-
-### Additional Steps
-
-1. **Create a Code of Conduct**: Ensure you have a `CODE_OF_CONDUCT.md` file in your repository.
-2. **Label Issues**: Go through your issues and label those you want to be Hacktoberfest contributions accordingly.
-3. **Opt-in for Hacktoberfest**: Add the “hacktoberfest” topic to your repository settings.
-
-This structure will help encourage contributions while maintaining a healthy and productive community atmosphere. Happy coding!
