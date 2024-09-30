@@ -11,23 +11,21 @@ Thank you for your interest in contributing to our MERN stack task management sy
    git clone https://github.com/your-username/mern-task-management.git
 Create a New Branch: Create a new branch for your feature or fix:
 
-bash
-Copy code
-git checkout -b my-feature-branch
+```bash
+   git checkout -b my-feature-branch
+```
 Make Your Changes: Implement your changes, ensuring that your code follows the project’s coding style.
 
 Test Your Changes: Run tests to make sure everything works as expected.
 
 Commit Your Changes: Commit your changes with a clear message:
-
-bash
-Copy code
+``` bash
 git commit -m "Add a brief description of your changes"
+```
 Push to Your Fork: Push your changes to your forked repository:
-
-bash
-Copy code
+``` bash
 git push origin my-feature-branch
+```
 Open a Pull Request: Navigate to the original repository and click the "New Pull Request" button. Select your branch and submit the pull request.
 
 Issues
@@ -48,11 +46,3 @@ If you have any questions, feel free to open an issue or contact the maintainers
 
 Thank you for your contributions and happy coding!
 
-
-### Additional Steps
-
-1. **Create a Code of Conduct**: Ensure you have a `CODE_OF_CONDUCT.md` file in your repository.
-2. **Label Issues**: Go through your issues and label those you want to be Hacktoberfest contributions accordingly.
-3. **Opt-in for Hacktoberfest**: Add the “hacktoberfest” topic to your repository settings.
-
-This structure will help encourage contributions while maintaining a healthy and productive community atmosphere. Happy coding!
