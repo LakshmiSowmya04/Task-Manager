@@ -28,24 +28,46 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Task Management App</h1>
-      <ProjectForm setProjects={setProjects} />
-      <TaskForm projects={projects} setTasks={setTasks} />
-      <h2>Projects</h2>
-      <ul>
-        {projects.map((project) => (
-          <li key={project._id}>{project.name}</li>
-        ))}
-      </ul>
-      <h2>Tasks</h2>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task._id}>
-            {task.name} - {task.status}
-          </li>
-        ))}
-      </ul>
+    <div className="max-w-4xl mx-auto p-6 bg-white rounded-3xl shadow-lg">
+      <h1 className="text-2xl font-bold mb-4">
+        Hello user name, You have {tasks.length} tasks remaining
+      </h1>
+
+      <div className="flex mb-6">
+        <button className="flex-1 py-2 px-4 bg-blue-500 text-white font-semibold rounded-l-lg">
+          Projects
+        </button>
+        <button className="flex-1 py-2 px-4 bg-gray-200 text-gray-700 font-semibold rounded-r-lg">
+          Tasks
+        </button>
+      </div>
+
+      <div className="flex space-x-4">
+        <div className="w-1/2 p-4 bg-gray-100 rounded-lg">
+          <h2 className="text-xl font-semibold mb-4">Projects</h2>
+          <ProjectForm setProjects={setProjects} />
+          <ul className="mt-4">
+            {projects.map((project) => (
+              <li key={project._id} className="py-2 border-b">
+                {project.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="w-1/2 p-4 bg-gray-100 rounded-lg">
+          <h2 className="text-xl font-semibold mb-4">Tasks</h2>
+          <TaskForm projects={projects} setTasks={setTasks} />
+          <ul className="mt-4">
+            {tasks.map((task) => (
+              <li key={task._id} className="py-2 border-b">
+                {task.name} -{" "}
+                <span className="text-blue-500">{task.status}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
