@@ -1,38 +1,196 @@
-.App {
+/* App.css - Global styles with a black and white theme without glow effects */
+
+body {
+  background-color: #000000; /* Pure black background */
+  color: #FFFFFF; /* White text */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.Appheader {
+  text-align: center;
+  color: #FFFFFF; /* White header */
+  margin-top: 30px;
+  font-size: 42px;
+  padding: 20px;
+  border-bottom: 3px solid #808080; /* Gray border */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.container button{
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0;
+background-color: black;
+  color: white;
+  border-bottom: 5px solid rgba(128, 128, 128, 0.539);
+}
+.container button:hover{
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+}
+.active
+{
+  border-bottom: 5px solid rgb(236, 232, 232) !important;
+}
+.greeting {
+  font-size: 24px;
+  margin-bottom: 20px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section {
+  width: 100%;
+  /* padding: 10%; */
+  background-color: #1C1C1C; /* Dark gray section for contrast */
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.section2{
+  padding: 2%;
+  width: 90%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h2 {
+  color: #FFFFFF; /* White */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #2C2C2C; /* Darker gray for list items */
+  border-radius: 10px;
+  color: #FFFFFF; /* White */
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #4e4b4b; /* Gray hover effect for items */
+}
+
+.toggle-button {
+  background-color: #3b3939; /* Gray button */
+  color: #FFFFFF; /* White text */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #4e4b4b; /* Dim gray hover */
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+/* ProjectForm.css and TaskForm.css - Common styles for both forms without glow effects */
+
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 20px;
+}
+
+input, select {
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background-color: #2C2C2C; /* Darker gray for form fields */
+  color: #FFFFFF; /* White text */
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border: 2px solid #808080; /* Gray border on focus */
+}
+
+button {
+  padding: 12px;
+  background-color: #808080; /* Gray button */
+  border: none;
+  color: #FFFFFF; /* White text */
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #A9A9A9; /* Dim gray hover */
+}
+
+
+/* Style for the project list */
+/* .project-list
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+} */
+.project-item {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #333;
   color: white;
+  cursor: pointer;
+  height: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.project-description {
+  display: none; /* Hidden by default */
+  color: black;
+  font-size: 15px;
+  position: absolute;
+  top: 105%;
+  left: 2%;
+  background-color:white;
+  padding: 8px;
+  border-radius: 5px;
+  z-index: 20;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.project-item:hover .project-description {
+  display: block; /* Show description on hover */
+}
+
+.close
+{
+  background-color: rgb(149, 14, 14) !important;
+}
+.close:hover
+{
+  background-color: rgb(255, 0, 0) !important;
+}
+.submit
+{
+  background-color: rgb(67, 8, 67) !important;
+  width: 30% !important;
+}
+.submit:hover
+{
+  background-color: rgb(255, 0, 255) !important;
 }
