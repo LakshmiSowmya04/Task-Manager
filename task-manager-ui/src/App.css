@@ -24,21 +24,41 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+.container button{
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0;
+background-color: black;
+  color: white;
+  border-bottom: 5px solid rgba(128, 128, 128, 0.539);
+}
+.container button:hover{
+  background-color: black;
+  color: white;
+  transform: scale(1.05);
+}
+.active
+{
+  border-bottom: 5px solid rgb(236, 232, 232) !important;
+}
 .greeting {
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
 }
 .section {
-  width: 48%;
-  padding: 20px;
+  width: 100%;
+  /* padding: 10%; */
   background-color: #1C1C1C; /* Dark gray section for contrast */
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
   transition: transform 0.3s ease;
 }
 
-.section:hover {
-  transform: scale(1.02); /* Slight scale effect on hover */
+.section2{
+  padding: 2%;
+  width: 90%;
 }
 
 h2 {

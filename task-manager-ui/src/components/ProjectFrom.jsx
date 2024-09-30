@@ -1,24 +1,32 @@
 import React, { useState } from "react";
-// import "./ProjectForm.css";
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ProjectForm = ({ setProjects }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/projects", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ "name":name, "description":desc }),
-    });
-    const newProject = await response.json();
-    setProjects((prev) => [...prev, newProject]);
-    setName('');
-    setDesc('');
+    try {
+      const response = await fetch("http://localhost:5000/projects", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, description: desc }),
+      });
+      if (!response.ok) throw new Error('Failed to add project');
+      const newProject = await response.json();
+      setProjects((prev) => [...prev, newProject]);
+      setName('');
+      setDesc('');
+      toast.success('Project added successfully!');
+    } catch (error) {
+      toast.error('Failed to add project');
+    }
   };
 
+
   return (
+    <>
     <form className="project-form" onSubmit={handleSubmit}>
       <label>Project Name:</label>
       <input
@@ -40,6 +48,8 @@ const ProjectForm = ({ setProjects }) => {
 
       <button type="submit">Add Project</button>
     </form>
+    <ToastContainer/>
+    </>
   );
 };
 

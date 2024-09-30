@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const TaskForm = ({ projects, setTasks, setTaskCount}) => {
   const [name, setName] = useState('');
   const [project, setProject] = useState('');
@@ -9,21 +10,28 @@ const TaskForm = ({ projects, setTasks, setTaskCount}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/tasks', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, project, deadline, priority, status }), // Include status
-    });
-    const newTask = await response.json();
-    setTasks((prev) => [...prev, newTask]);
-    setName('');
-    setProject('');
-    setDeadline('');
-    setPriority('Low');
-    setStatus('Pending');
+    try {
+      const response = await fetch('http://localhost:5000/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, project, deadline, priority, status }),
+      });
+      if (!response.ok) throw new Error('Failed to add task');
+      const newTask = await response.json();
+      setTasks((prev) => [...prev, newTask]);
+      setName('');
+      setProject('');
+      setDeadline('');
+      setPriority('Low');
+      setStatus('Pending');
+      toast.success('Task added successfully!');
+    } catch (error) {
+      toast.error('Failed to add task');
+    }
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <label>Task Name:</label>
       <input
@@ -64,6 +72,8 @@ const TaskForm = ({ projects, setTasks, setTaskCount}) => {
 
       <button type="submit">Add Task</button>
     </form>
+     <ToastContainer />
+    </>
   );
 };
 
