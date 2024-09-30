@@ -18,3 +18,14 @@ body:
       placeholder: Describe the new feature or enhancement you'd like to see.
     validations:
       required: true
+- type: checkboxes
+    id: terms
+    attributes:
+      label: Record
+      options:
+        - label: "I agree to follow this project's Code of Conduct"
+          required: true
+        - label: "I want to work on this issue"
+          required: False
+        - label: "I'm willing to provide further clarification or assistance if needed."
+          required: False
