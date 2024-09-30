@@ -1,10 +1,20 @@
-import { Router } from "express"; 
-import { createTask, getTasks } from "../controllers/tasks.controllers.js";
+import express from 'express';
+import { createProject, getProjectById, getProjects } from '../controllers/project.controllers.js';
+import authenticateJWT from '../middlewares/auth.middleware.js';
 
-const router = Router();
+const router = express.Router();
 
-// Define routes for tasks
-router.post("/", createTask); 
-router.get("/", getTasks); 
+// Protect all project routes
+router.use(authenticateJWT);
 
-export default router; 
+
+// Route to create a new project
+router.post('/', createProject);
+
+// Route to get all projects for a user
+router.get('/', getProjects);
+
+// Route to get a specific project by ID
+router.get('/:projectId', getProjectById);
+
+export default router;

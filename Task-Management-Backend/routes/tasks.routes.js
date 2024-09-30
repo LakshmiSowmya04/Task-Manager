@@ -1,10 +1,13 @@
+// tasks.routes.js
 import { Router } from "express"; 
-import { createTask, getTasks } from "../controllers/tasks.controllers.js";
+import { createTask, getTasksByProject } from "../controllers/tasks.controllers.js";
 
 const router = Router();
 
-// Define routes for tasks
-router.post("/", createTask); // POST route for creating a task
-router.get("/", getTasks); // GET route for fetching all tasks
+// Route to create a new task
+router.post('/', createTask);
 
-export default router; 
+// Route to get tasks by project ID
+router.get('/project/:projectId', getTasksByProject);
+
+export default router;

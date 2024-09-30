@@ -20,9 +20,14 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`); // Log the HTTP link
 });
 
+app.get('/', (req, res, next) => {
+  res.send({
+      msg: "Hello TaskManager "
+  });
+});
+
 // Our project routes go here
 // http://localhost:8000/api/v1/healthcheck
-
 app.use("/api/v1/healthcheck", healthcheckRouter);
 app.use("/api/v1/projects", projectsRouter);
 app.use("/api/v1/tasks", tasksRouter);
