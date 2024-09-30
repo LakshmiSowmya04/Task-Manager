@@ -1,0 +1,145 @@
+
+  .auth-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #009dff;
+    border: solid 1px #009dff;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .auth-link:hover {
+    background-color: #018ce3;
+  }
+  
+  /* Auth Styles */
+  .auth-section {
+    min-height: 100vh;
+    margin: 0% auto;
+    background-color: #f1f2f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-logo {
+    padding: 20px 30px;
+  }
+  
+  .auth-container-2 {
+    min-width: 20%;
+    max-width: 400px; /* Set a max width to prevent size difference */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px; /* Adjust padding to manage space at the bottom */
+}
+
+  
+.auth-container-2 form {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgb(0 0 0 / 5%),
+                0 20px 48px rgb(0 0 0 / 5%),
+                0 1px 4px rgb(0 0 0 / 10%);
+    max-height: 450px; /* Set a max height if necessary */
+}
+
+  
+  .auth-container-2 form label input {
+    padding: 10px;
+    width: 95%;
+    border: solid 1px #0000003e;
+    font-size: 13px;
+    padding-left: 10px; /* Equal padding for both sides */
+    padding-right: 10px; /* Add this line */
+}
+
+  
+  .auth-container-2 label input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .auth-container-2 form label:nth-child(1) h4,
+  .auth-container-2 form label:nth-child(2) h4,
+  .auth-container-2 form label:nth-child(3) h4 {
+    margin-bottom: 5px;
+    margin-top: 10px;
+  }
+  
+  .auth-container-2 form label:nth-child(4) {
+    display: flex;
+  }
+  
+  .auth-container-2 form label:nth-child(4) input {
+    margin: 10px 7px 10px 0px;
+    padding-left: 50px;
+  }
+  
+  .auth-btn {
+    margin-top: 10px;
+    padding: 10px 5px;
+    background-color: #009dff;
+    border: solid 1px #009dff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .auth-btn:hover {
+    background-color: #018ce3;
+  }
+  
+  .auth-btn.loading {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+  
+  .auth-btn.loading:hover {
+    background-color: darkgrey;
+  }
+  
+  .auth-section.loading-overlay {
+    position: relative;
+  }
+  
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+  }
+  
+  .handle-switch-btn {
+    background-color: transparent;
+    color: #007ac6;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 425px) {
+    .auth-container-1 {
+      text-align: center;
+    }
+  }
