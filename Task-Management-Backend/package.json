@@ -2,10 +2,12 @@
   "name": "task-management-backend",
   "version": "1.0.0",
   "description": "task manager that allows users to create projects and tasks",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon server"
+    "start": "node server.js",
+    "dev"   : "nodemon server.js"
   },
   "author": "Lakshmi Sowmya",
   "license": "ISC",
