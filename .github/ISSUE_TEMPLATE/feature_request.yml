@@ -18,6 +18,7 @@ body:
       placeholder: Describe the new feature or enhancement you'd like to see.
     validations:
       required: true
+
 - type: checkboxes
     id: terms
     attributes:
