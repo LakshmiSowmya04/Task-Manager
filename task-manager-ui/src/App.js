@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect , useState } from "react";
 import ProjectForm from "./components/ProjectFrom";
 import TaskForm from "./components/TaskForm";
-
+import "./App.css"; // Main CSS
 const App = () => {
   const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
-
+  const [taskCount, setTaskCount] = useState(0); // State for the task count
+  const [showProjectForm, setShowProjectForm] = useState(false);
+  const [showTaskForm, setShowTaskForm] = useState(false);
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch("http://localhost:5000/projects");
@@ -14,8 +16,6 @@ const App = () => {
     };
     fetchProjects();
   }, []);
-
-  // i am adding this
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -27,25 +27,57 @@ const App = () => {
     fetchTasks();
   }, []);
 
+  useEffect(()=>{
+    
+    setTaskCount(tasks.filter((task) => task.status !== "Completed").length);
+  } , [tasks])
+
   return (
-    <div>
-      <h1>Task Management App</h1>
-      <ProjectForm setProjects={setProjects} />
-      <TaskForm projects={projects} setTasks={setTasks} />
-      <h2>Projects</h2>
-      <ul>
-        {projects.map((project) => (
-          <li key={project._id}>{project.name}</li>
-        ))}
-      </ul>
-      <h2>Tasks</h2>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task._id}>
-            {task.name} - {task.status}
-          </li>
-        ))}
-      </ul>
+    <div className="app-container">
+      <h1 className="Appheader">Task Management App</h1>
+      <h2 className="greeting">
+        Hello user_name, you have {taskCount} tasks remaining
+      </h2>
+      <div className="container">
+        {/* Left Section: Projects */}
+        <div className="section projects-section">
+          <h2>Projects</h2>
+          <button
+            className="toggle-button"
+            onClick={() => setShowProjectForm(!showProjectForm)}
+          >
+            {showProjectForm ? "Close Form" : "Add Project"}
+          </button>
+          {showProjectForm && <ProjectForm setProjects={setProjects} />}
+          <ul className="project-list">
+            {projects.map((project) => (
+              <li key={project._id} className="project-item">
+              {project.name}
+              <span className="project-description">{project.description}</span>
+            </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right Section: Tasks */}
+        <div className="section tasks-section">
+          <h2>Tasks</h2>
+          <button
+            className="toggle-button"
+            onClick={() => setShowTaskForm(!showTaskForm)}
+          >
+            {showTaskForm ? "Close Form" : "Add Task"}
+          </button>
+          {showTaskForm && <TaskForm projects={projects} setTasks={setTasks} setTaskCount={setTaskCount} />}
+          <ul className="task-list">
+            {tasks.map((task) => (
+              <li key={task._id}>
+                {task.name} - {task.status}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
