@@ -20,35 +20,6 @@ body:
       required: true
   - type: textarea
     id: use-case
-    attributes:
-      label: Use Case
-      description: How would this feature enhance your use of the project?
-      placeholder: Describe a specific use case or scenario where this feature would be beneficial.
-    validations:
-      required: true
-  - type: textarea
-    id: benefits
-    attributes:
-      label: Benefits
-      description: What benefits would this feature bring to the project or community?
-      placeholder: Explain the advantages of implementing this feature.
-  - type: dropdown
-    id: priority
-    attributes:
-      label: Priority
-      description: How important is this feature to you?
-      options:
-        - High
-        - Medium
-        - Low
-      default: 0
-    validations:
-      required: true
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Record
-      options:
         - label: "I agree to follow this project's Code of Conduct"
           required: true
         - label: "I want to work on this issue"
