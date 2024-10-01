@@ -2,7 +2,7 @@ import express from "express";
 import projectsRouter from "./routes/project-routes.js";
 import tasksRouter from "./routes/task-routes.js";
 import healthcheckRouter from "./routes/healthcheck-routes.js";
-import authRouter from "./routes/auth-routes.js"
+import authRouter from "./routes/auth-routes.js";
 import { PORT } from "./config/env-config.js";
 import cors from "cors";
 import connectDB from "./db/index.js";
@@ -16,7 +16,7 @@ app.use(cors());
 connectDB();
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`); // Log the HTTP link
+  console.log(`Server is running on http://localhost:${PORT}`); // Log the HTTP link
 });
 
 // Our project routes go here
