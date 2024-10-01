@@ -1,7 +1,7 @@
 import mongoose from "mongoose"; 
 
 // MongoDB connection URIs
-const MONGODB_URI = "mongodb+srv://username:password@cluster0.zn5ekhe.mongodb.net"; // Use this for the cloud MongoDB
+const MONGODB_URI = "mongodb://mongo:27017/taskmanager"; // Use this for the cloud MongoDB
 // const MONGODB_URI = "mongodb://localhost:27017/taskmanager"; // Use this for local MongoDB
 
 const connectDB = async () => {
