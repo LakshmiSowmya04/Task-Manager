@@ -10,27 +10,25 @@ const TaskForm = ({ projects, setTasks}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/tasks', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, project, deadline, priority, status }),
-      });
-      if (!response.ok) throw new Error('Failed to add task');
-      const newTask = await response.json();
-      setTasks((prev) => [...prev, newTask]);
-      setName('');
-      setProject('');
-      setDeadline('');
-      setPriority('Low');
-      setStatus('Pending');
-      toast.success('Task added successfully!');
-    } catch (error) {
-      toast.error('Failed to add task');
-    }
-  };
-
+      const response = await fetch('http://localhost:8000/api/v1/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, project, deadline, priority }),
+    });if (!response.ok) throw new Error('Failed to add task');
+    const newTask = await response.json();
+    setTasks((prev) => [...prev, newTask]);
+    setName('');
+    setProject('');
+    setDeadline('');
+    setPriority('Low');
+    setStatus('Pending');
+    toast.success('Task added successfully!');
+  } catch (error) {
+    toast.error('Failed to add task');
+  }
+};
   return (
-    <>
+<>
     <form onSubmit={handleSubmit}>
       <label>Task Name:</label>
       <input

@@ -5,9 +5,9 @@ function ProjectList() {
     const [projects, setProjects] = useState([]);
     useEffect(() => {
         const fetchProjects = async () => {
-          const response = await fetch("http://localhost:5000/projects");
+          const response = await fetch("http://localhost:8000/api/v1/projects");
           const data = await response.json();
-          setProjects(data);
+          setProjects(data.data);
         };
         fetchProjects();
       }, []);

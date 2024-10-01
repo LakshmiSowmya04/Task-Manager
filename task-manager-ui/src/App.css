@@ -1,5 +1,3 @@
-/* App.css - Global styles with a black and white theme without glow effects */
-
 body {
   background-color: #000000; /* Pure black background */
   color: #FFFFFF; /* White text */
@@ -16,7 +14,6 @@ body {
   padding: 20px;
   border-bottom: 3px solid #808080; /* Gray border */
 }
-
 .container {
   display: flex;
   justify-content: space-between;

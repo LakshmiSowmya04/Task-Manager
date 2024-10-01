@@ -9,19 +9,19 @@ function TaskList() {
     const { setTaskCount } = useOutletContext(); 
     useEffect(() => {
         const fetchProjects = async () => {
-          const response = await fetch("http://localhost:5000/projects");
+          const response = await fetch("http://localhost:8000/api/v1/projects");
           const data = await response.json();
-          setProjects(data);
+          setProjects(data.data);
         };
         fetchProjects();
       }, []);
     
       useEffect(() => {
         const fetchTasks = async () => {
-          const response = await fetch("http://localhost:5000/tasks");
+          const response = await fetch("http://localhost:8000/api/v1/tasks");
           const data = await response.json();
           console.log(data);
-          setTasks(data);
+          setTasks(data.data);
         };
         fetchTasks();
       }, []);
