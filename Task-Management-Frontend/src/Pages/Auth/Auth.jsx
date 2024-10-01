@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Auth.css';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import *as api from "../../Api/index"
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -43,9 +43,9 @@ const Auth = () => {
     try {
       let response;
       if (isSignup) {
-        response = await axios.post('http://localhost:5000/user/signup', { name, email, password });
+        response = await api.signUp({ name, email, password });
       } else {
-        response = await axios.post('http://localhost:5000/user/login', { email, password });
+        response= await api.logIn({ email, password });
       }
 
       localStorage.setItem('token', response.data.token);

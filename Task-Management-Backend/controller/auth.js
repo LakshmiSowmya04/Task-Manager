@@ -17,13 +17,14 @@ export const signup =async(req,res)=>{
         res.status(200).json({result:newUser,token});
     }
     catch(error){
-        req.status(500).json("Something went wrong");
+        res.status(500).json("Something went wrong");
     }
     
 }
 
 export const login =async(req,res)=>{
     const {email,password}=req.body;//after this we got email and password field form login page
+    console.log(email,password);
     try{
         //since we are logining so if we found that user then and only then we need to allow.
         const existinguser=await User.findOne({email});
@@ -43,7 +44,7 @@ export const login =async(req,res)=>{
         res.status(200).json({result:existinguser,token}); 
     }   
     catch(error){
-        req.status(500).json("Something went wrong");
+        res.status(500).json("Something went wrong");
     }
 }
 
