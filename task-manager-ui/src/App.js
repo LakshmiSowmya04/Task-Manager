@@ -9,7 +9,9 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1 className="Appheader">Task Management App</h1>
+
+      {/* To test TailwindCSS . Update styles later */}
+      <h1 className="ml-10 text-3xl p-3 text-red-500">Task Management App</h1>
       <h2 className="greeting">
         Hello user_name, you have {taskCount} tasks remaining
       </h2>
