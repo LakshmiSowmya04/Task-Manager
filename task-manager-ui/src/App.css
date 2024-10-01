@@ -32,6 +32,10 @@ background-color: black;
   color: white;
   border-bottom: 5px solid rgba(128, 128, 128, 0.539);
 }
+.Links
+{
+  width: 100%;
+}
 .container button:hover{
   background-color: black;
   color: white;

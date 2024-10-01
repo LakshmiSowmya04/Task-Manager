@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const TaskForm = ({ projects, setTasks, setTaskCount}) => {
+const TaskForm = ({ projects, setTasks}) => {
   const [name, setName] = useState('');
   const [project, setProject] = useState('');
   const [deadline, setDeadline] = useState('');
   const [priority, setPriority] = useState('Low');
   const [status, setStatus] = useState('Pending'); // New status field
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
