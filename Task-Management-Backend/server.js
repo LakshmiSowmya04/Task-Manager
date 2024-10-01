@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-// connectDB();
+connectDB();
 
 const PORT = 8000; // Change the port to 8000
 

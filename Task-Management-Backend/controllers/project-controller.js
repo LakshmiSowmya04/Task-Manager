@@ -1,6 +1,6 @@
-const Project = require("../models/Project");
+import Project from "../models/project.models.js";
 
-const createProject = async (req, res) => {
+export const createProject = async (req, res) => {
     const { name, description } = req.body;
 
     try {
@@ -17,7 +17,8 @@ const createProject = async (req, res) => {
     }
 };
 
-const getProjects = async (req, res) => {
+
+export const getProjects = async (req, res) => {
     try {
         const projects = await Project.find({ user: req.user.id });
         res.status(200).json(projects);
@@ -26,7 +27,7 @@ const getProjects = async (req, res) => {
     }
 };
 
-const getProjectById = async (req, res) => {
+export const getProjectById = async (req, res) => {
     const { projectId } = req.params;
 
   if(!projectId){
@@ -53,7 +54,7 @@ const getProjectById = async (req, res) => {
     }
 };
 
-const updateProjectById = async (req, res) => {
+export const updateProjectById = async (req, res) => {
   const { projectId } = req.params;
   const { name, description } = req.body;
 
@@ -87,7 +88,7 @@ const updateProjectById = async (req, res) => {
 
 }
 
-const deleteProjectById = async (req, res) => {
+export const deleteProjectById = async (req, res) => {
   const { projectId } = req.params;
 
   if(!projectId){
@@ -115,11 +116,3 @@ const deleteProjectById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
-
-module.exports = {
-	createProject,
-	getProjects,
-	getProjectById,
-	updateProjectById,
-	deleteProjectById,
-};

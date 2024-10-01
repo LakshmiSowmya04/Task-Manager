@@ -1,0 +1,27 @@
+services:
+  backend:
+    build: ./Task-Management-Backend
+    container_name: task-manager-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./task-manager-ui
+    container_name: task-manager-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo
+    container_name: task-manager-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
