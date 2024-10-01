@@ -1,27 +1,28 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const projectsRouter = require("./routes/project");
-const tasksRouter = require("./routes/tasks");
+import express from "express";
+import projectsRouter from "./routes/project.routes.js";
+import tasksRouter from "./routes/tasks.routes.js";
+import healthcheckRouter from "./routes/healthcheck.routes.js";
+
+import cors from "cors";
+import connectDB from "./db/index.js";
+
 const app = express();
-const cors = require("cors");
 
 app.use(express.json());
 app.use(cors());
-app.use("/projects", projectsRouter);
-app.use("/tasks", tasksRouter);
 
-mongoose
-  .connect("mongodb://localhost:27017/taskmanager", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-  });
+// Connect to MongoDB
+// connectDB();
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+const PORT = 8000; // Change the port to 8000
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`); // Log the HTTP link
 });
+
+// Our project routes go here
+// http://localhost:8000/api/v1/healthcheck
+
+app.use("/api/v1/healthcheck", healthcheckRouter);
+app.use("/api/v1/projects", projectsRouter);
+app.use("/api/v1/tasks", tasksRouter);

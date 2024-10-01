@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose"; 
 
 const TaskSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,4 +8,5 @@ const TaskSchema = new mongoose.Schema({
   status: { type: String, enum: ["Pending", "Completed"], default: "Pending" },
 });
 
-module.exports = mongoose.model("Task", TaskSchema);
+const Task = mongoose.model("Task", TaskSchema);
+export default Task;
