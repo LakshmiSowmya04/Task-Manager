@@ -1,51 +1,27 @@
 import React, { useEffect, useState } from "react";
-import ProjectForm from "./components/ProjectFrom";
-import TaskForm from "./components/TaskForm";
-
+import { Outlet , Link, useLocation } from "react-router-dom";
+import "./App.css"; // Main CSS
 const App = () => {
-  const [projects, setProjects] = useState([]);
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await fetch("http://localhost:5000/projects");
-      const data = await response.json();
-      setProjects(data);
-    };
-    fetchProjects();
-  }, []);
-
-  // i am adding this
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const response = await fetch("http://localhost:5000/tasks");
-      const data = await response.json();
-      console.log(data);
-      setTasks(data);
-    };
-    fetchTasks();
-  }, []);
+  const [taskCount, setTaskCount] = useState(0); // State for the task count
+  const [showProjects, setShowProjects] = useState(false);
+  const [showTasks, setShowTasks] = useState(false);
+  const location = useLocation();
 
   return (
-    <div>
-      <h1>Task Management App</h1>
-      <ProjectForm setProjects={setProjects} />
-      <TaskForm projects={projects} setTasks={setTasks} />
-      <h2>Projects</h2>
-      <ul>
-        {projects.map((project) => (
-          <li key={project._id}>{project.name}</li>
-        ))}
-      </ul>
-      <h2>Tasks</h2>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task._id}>
-            {task.name} - {task.status}
-          </li>
-        ))}
-      </ul>
+    <div className="app-container">
+      <h1 className="Appheader">Task Management App</h1>
+      <h2 className="greeting">
+        Hello user_name, you have {taskCount} tasks remaining
+      </h2>
+      <div className="container">
+        <Link className="Links" to="/projects"><button className={showProjects?"active":""} onClick={() => {
+          setShowProjects(true); setShowTasks(false); }}>Projects</button></Link>
+        <Link className="Links" to="/tasks"><button className={showTasks?"active":""}onClick={() => {
+          setShowTasks(true); setShowProjects(false); }}>Tasks</button></Link>
+      </div>
+      {
+        location.pathname === "/tasks" ? <Outlet context={{setTaskCount}} />: <Outlet/>
+      }
     </div>
   );
 };
