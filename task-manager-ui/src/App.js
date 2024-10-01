@@ -9,15 +9,22 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1 className="Appheader">Task Management App</h1>
-      <h2 className="greeting">
-        Hello user_name, you have {taskCount} tasks remaining
+
+      {/* To test TailwindCSS . Update styles later */}
+      <div className=" text-3xl p-3 text-white bg-black"><p className="p-5 font-bold"> ✅ Task Management App</p></div>
+     
+      <div className="ml-10 mt-60">
+      <h2 className="text-4xl">
+        Hello user, you have {taskCount} tasks remaining
       </h2>
-      <div className="container">
-        <Link className="Links" to="/projects"><button className={showProjects?"active":""} onClick={() => {
-          setShowProjects(true); setShowTasks(false); }}>Projects</button></Link>
+      <div className="mt-10 border border-black w-max  p-5 ">
+        <Link to="/projects"><button className={showProjects?"active":""} onClick={() => {
+          setShowProjects(true); setShowTasks(false); }}>Click to view your projects </button></Link></div>
+          <br/>
+
+          <div className="mt-10 border border-black w-max  p-5 ">
         <Link className="Links" to="/tasks"><button className={showTasks?"active":""}onClick={() => {
-          setShowTasks(true); setShowProjects(false); }}>Tasks</button></Link>
+          setShowTasks(true); setShowProjects(false); }}>Click to view your Projects</button></Link></div>
       </div>
       {
         location.pathname === "/tasks" ? <Outlet context={{setTaskCount}} />: <Outlet/>
