@@ -17,24 +17,32 @@ export const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "User already registered with this email.");
     }
 
+    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ email, username, password: hashedPassword });
 
     await newUser.save();
-    res.status(201).json(new ApiResponse(201, null, "User created successfully."));
+    res.status(201).json(new ApiResponse(201, newUser, "User created successfully."));
 });
 
 // Login User
 export const loginUser = asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
+    const email = req.body.email.trim();
+    const password = req.body.password.trim();
+
+    console.log("Login Attempt with Email:", email); // Debugging log
 
     const user = await User.findOne({ email });
     if (!user) {
         throw new ApiError(404, "User not found. Please register.");
     }
 
+    // Log the stored hashed password for debugging
+    console.log("Stored Hashed Password:", user.password);
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
+        console.log("Invalid credentials for user:", email); // Log invalid attempts
         throw new ApiError(401, "Invalid credentials");
     }
 

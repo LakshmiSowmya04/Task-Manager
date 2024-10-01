@@ -1,4 +1,5 @@
 import express from "express";
+import usersRouter from "./routes/user.routes.js";
 import projectsRouter from "./routes/project.routes.js";
 import tasksRouter from "./routes/tasks.routes.js";
 import healthcheckRouter from "./routes/healthcheck.routes.js";
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-// connectDB();
+connectDB();
 
 const PORT = 8000; // Change the port to 8000
 
@@ -29,5 +30,6 @@ app.get('/', (req, res, next) => {
 // Our project routes go here
 // http://localhost:8000/api/v1/healthcheck
 app.use("/api/v1/healthcheck", healthcheckRouter);
-app.use("/api/v1/projects", projectsRouter);
-app.use("/api/v1/tasks", tasksRouter);
+app.use("/api/v1/user", usersRouter);
+app.use("/api/v1/project", projectsRouter);
+app.use("/api/v1/task", tasksRouter);
