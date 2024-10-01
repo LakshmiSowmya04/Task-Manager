@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = require("../config/env-config");
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../config/env-config.js";
 
 const authenticateJWT = (req, res, next) => {
     const token = req.headers["authorization"]?.split(" ")[1];
@@ -17,9 +17,9 @@ const authenticateJWT = (req, res, next) => {
         }
         req.user = user;
         console.log(user);
-        
+
         next();
     });
 };
 
-module.exports = authenticateJWT;
+export default authenticateJWT;

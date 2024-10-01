@@ -1,20 +1,19 @@
-import mongoose from "mongoose"; 
+import mongoose from 'mongoose';
 
-// MongoDB connection URIs
-const MONGODB_URI = "mongodb+srv://username:password@cluster0.zn5ekhe.mongodb.net"; // Use this for the cloud MongoDB
-// const MONGODB_URI = "mongodb://localhost:27017/taskmanager"; // Use this for local MongoDB
+const MONGODB_URI = 'mongodb://localhost:27017/taskmanager';
 
 const connectDB = async () => {
   try {
     await mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
+      useNewUrlParser: true,   
       useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,
     });
-    console.log("Connected to MongoDB");
+    console.log('Connected to MongoDB successfully');
   } catch (err) {
-    console.error("MongoDB connection error:", err);
-    process.exit(1); // Exit process with failure
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
   }
 };
 
-export default connectDB; 
+export default connectDB;
