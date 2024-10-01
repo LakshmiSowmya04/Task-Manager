@@ -8,7 +8,7 @@ const ProjectForm = ({ setProjects }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/projects", {
+      const response = await fetch("http://localhost:8000/api/v1/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, description: desc }),
