@@ -1,6 +1,6 @@
 import { Router } from "express";
-import Task from "../controllers/task-controllers.js";
-import authenticateJWT from "../middlewares/auth-middleware.js";
+import Task from "../controllers/task.js";
+import authenticateJWT from "../middlewares/auth.js";
 const router = Router();
 
 router.post("/", authenticateJWT, Task.createTask);

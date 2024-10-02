@@ -1,6 +1,6 @@
 import { Router } from "express";
-import Project from "../controllers/project-controllers.js";
-import authenticateJWT from "../middlewares/auth-middleware.js";
+import Project from "../controllers/project.js";
+import authenticateJWT from "../middlewares/auth.js";
 const router = Router();
 
 router.post("/", authenticateJWT, Project.createProject);

@@ -1,7 +1,7 @@
-import Task from "../models/task-models.js";
-import Project from "../models/project-models.js";
-import { ApiError } from "../utils/ApiError.js";
-import { ApiResponse } from "../utils/ApiResponse.js";
+import Task from "../models/task.js";
+import Project from "../models/project.js";
+import { ApiError } from "../utils/api-error.js";
+import { ApiResponse } from "../utils/api-response.js";
 // import { asyncHandler } from "../utils/asyncHandler.js";
 const createTask = async (req, res) => {
     const { name, deadline, priority, project } = req.body;

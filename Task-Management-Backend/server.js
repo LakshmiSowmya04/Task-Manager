@@ -1,8 +1,8 @@
 import express from "express";
-import projectsRouter from "./routes/project-routes.js";
-import tasksRouter from "./routes/task-routes.js";
-import healthcheckRouter from "./routes/healthcheck-routes.js";
-import authRouter from "./routes/auth-routes.js";
+import projectsRouter from "./routes/project.js";
+import tasksRouter from "./routes/task.js";
+import healthcheckRouter from "./routes/health-check.js";
+import authRouter from "./routes/auth.js";
 import { PORT } from "./config/env-config.js";
 import cors from "cors";
 import connectDB from "./db/index.js";
