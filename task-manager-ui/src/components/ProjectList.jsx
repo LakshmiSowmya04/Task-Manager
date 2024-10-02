@@ -1,11 +1,13 @@
 import React, {useState , useEffect} from 'react'
 import ProjectForm from './ProjectFrom';
+import { backendApi } from "../config";
+
 function ProjectList() {
     const [showProjectForm, setShowProjectForm] = useState(false);
     const [projects, setProjects] = useState([]);
     useEffect(() => {
         const fetchProjects = async () => {
-          const response = await fetch("http://localhost:8000/api/v1/projects");
+          const response = await fetch(backendApi + "/api/v1/projects");
           const data = await response.json();
           setProjects(data.data);
         };
