@@ -15,13 +15,30 @@ function ProjectList() {
       }, []);
   return (
     <div className="section projects-section">
-        <div className="section2">
+      <div className="section2">
         <button
-          className={`toggle-button ${showProjectForm ? "close" : null}`}
+          className={`p-3 px-10 border text-white mt-10 w-full md:w-96 mb-0 ml-0 md:ml-10 rounded-lg font-semibold text-xl ${
+            showProjectForm
+              ? "bg-red-400 border-red-900"
+              : "bg-blue-500 border-green-500"
+          } ${showProjectForm ? " close" : ""} transition-all duration-300`}
           onClick={() => setShowProjectForm(!showProjectForm)}
         >
-          {showProjectForm ? "Close Form" : "Add Project"}
+          {showProjectForm ? (
+            <div className="flex">
+              {/* Random icon for time being . Change later */}
+              <img className="h-5 mt-[5px] mr-3" src="/images/closeicon.png" />
+              Close Form
+            </div>
+          ) : (
+            <div className="flex">
+              {/* Random icon for time being . Change later */}
+              <img className="h-8 mr-3" src="/images/plusIcon.png" /> Add New
+              Project
+            </div>
+          )}
         </button>
+
         {showProjectForm && <ProjectForm setProjects={setProjects} />}
         <ul className="project-list">
           {projects.map((project) => (
@@ -31,9 +48,9 @@ function ProjectList() {
             </li>
           ))}
         </ul>
-        </div>
-       </div>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default ProjectList
+export default ProjectList;

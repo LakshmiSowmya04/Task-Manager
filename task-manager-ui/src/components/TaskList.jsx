@@ -36,11 +36,30 @@ function TaskList() {
     <div className="section tasks-section">
          <div className="section2">
         <button
-          className={`toggle-button ${showTaskForm ? "close" : null}`}
+          className={`p-3 px-10 border text-white mt-10 w-full md:w-96 mb-0 ml-0 md:ml-10 rounded-lg font-semibold text-xl ${
+            showTaskForm
+              ? "bg-red-400 border-red-900"
+              : "bg-blue-500 border-green-500"
+          } ${showTaskForm ? "close" : null}`}
           onClick={() => setShowTaskForm(!showTaskForm)}
         >
-          {showTaskForm ? "Close Form" : "Add Task"}
+          {showTaskForm ?(
+            <div className="flex">
+              {/* Random icon for time being . Change later */}
+              <img className="h-5 mt-[5px] mr-3" src="/images/closeicon.png" />
+              Close Form
+            </div>
+          ) : (
+            <div className="flex">
+              {/* Random icon for time being . Change later */}
+              <img className="h-8 mr-3" src="/images/plusIcon.png" /> Add New
+              Task
+            </div>
+          )}
         </button>
+
+
+        
         {showTaskForm && <TaskForm projects={projects} setTasks={setTasks} setTaskCount={setTaskCount}/>}
         <ul className="task-list">
           {tasks.map((task) => (
