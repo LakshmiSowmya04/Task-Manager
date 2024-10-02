@@ -4,9 +4,9 @@ import authenticateJWT from "../middlewares/auth-middleware.js";
 const router = Router();
 
 router.post("/", authenticateJWT, Task.createTask);
-router.get("/:projectId", authenticateJWT, Task.getTasksByProject);
-router.get("/:taskId", authenticateJWT, Task.getTaskById);
-router.put("/:taskId", authenticateJWT, Task.updateTaskById);
-router.delete("/:taskId", authenticateJWT, Task.deleteTaskById);
+router.get("/p/:projectId", authenticateJWT, Task.getTasksByProject);
+router.get("/t/:taskId", authenticateJWT, Task.getTaskById);
+router.put("/t/:taskId", authenticateJWT, Task.updateTaskById);
+router.delete("/t/:taskId", authenticateJWT, Task.deleteTaskById);
 
 export default router;

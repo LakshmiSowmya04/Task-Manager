@@ -7,6 +7,13 @@ const registerUser = async (req, res) => {
   console.log(req.body);
 
   const { email, username, password } = req.body;
+
+  if (!email || !username || !password) {
+    return res.status(400).json({
+      message: "Email, username and password are required",
+    });
+  }
+
   try {
     const newUser = new User({ email, username, password });
     await newUser.save();
@@ -18,6 +25,12 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({
+      message: "Email and password are required",
+    });
+  }
 
   const user = await User.findOne({ email });
 
@@ -33,10 +46,16 @@ const loginUser = async (req, res) => {
   }
 
   const token = jwt.sign({ id: user._id }, JWT_SECRET, {
-    expiresIn: "2h",
+    expiresIn: "2d",
   });
 
-  res.json({ token });
+  res
+		.status(200)
+		.cookie('token', token, {
+			sameSite: false,
+			maxAge: 24 * 60 * 60 * 1000
+		})
+		.json({ message: 'Login successful', user: user });
 };
 
 export default {
