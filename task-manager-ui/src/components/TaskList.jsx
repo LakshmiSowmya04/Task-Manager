@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import TaskForm from './TaskForm';
 import { useOutletContext } from 'react-router-dom';
+import { backendApi } from "../config";
+
 function TaskList() {
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [tasks , setTasks] = useState([]);
@@ -9,7 +11,7 @@ function TaskList() {
     const { setTaskCount } = useOutletContext(); 
     useEffect(() => {
         const fetchProjects = async () => {
-          const response = await fetch("http://localhost:8000/api/v1/projects");
+          const response = await fetch(backendApi + "/api/v1/projects");
           const data = await response.json();
           setProjects(data.data);
         };
@@ -18,7 +20,7 @@ function TaskList() {
     
       useEffect(() => {
         const fetchTasks = async () => {
-          const response = await fetch("http://localhost:8000/api/v1/tasks");
+          const response = await fetch(backendApi + "/api/v1/tasks");
           const data = await response.json();
           console.log(data);
           setTasks(data.data);

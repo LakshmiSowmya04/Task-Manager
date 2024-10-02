@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { backendApi } from "../config";
 const ProjectForm = ({ setProjects }) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
@@ -8,7 +9,7 @@ const ProjectForm = ({ setProjects }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/v1/projects", {
+      const response = await fetch(backendApi + "/api/v1/projects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, description: desc }),
