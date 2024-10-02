@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-
-const MONGODB_URI = "mongodb://localhost:27017/taskmanager";
+import { MONGODB_URI } from "../config/env-config.js";
 
 const connectDB = async () => {
   try {
