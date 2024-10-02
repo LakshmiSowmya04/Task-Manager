@@ -13,7 +13,7 @@ function TaskList() {
         const fetchProjects = async () => {
           const response = await fetch(backendApi + "/api/v1/projects");
           const data = await response.json();
-          setProjects(data.data);
+          setProjects(data.data || []);
         };
         fetchProjects();
       }, []);
@@ -23,7 +23,7 @@ function TaskList() {
           const response = await fetch(backendApi + "/api/v1/tasks");
           const data = await response.json();
           console.log(data);
-          setTasks(data.data);
+          setTasks(data.data || []);
         };
         fetchTasks();
       }, []);

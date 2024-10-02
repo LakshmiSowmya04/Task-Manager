@@ -9,7 +9,7 @@ function ProjectList() {
         const fetchProjects = async () => {
           const response = await fetch(backendApi + "/api/v1/projects");
           const data = await response.json();
-          setProjects(data.data);
+          setProjects(data.data || []);
         };
         fetchProjects();
       }, []);
