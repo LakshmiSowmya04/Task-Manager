@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProjectForm from "./ProjectFrom";
 import { backendApi } from "../config";
+import { Link } from "react-router-dom";
 
 function ProjectList({ token }) {
   const [showProjectForm, setShowProjectForm] = useState(false);
@@ -18,7 +19,9 @@ function ProjectList({ token }) {
     fetchProjects();
   }, [token]);
   return (
-    <div className="section projects-section pt-40 w-full h-full">
+    <div className="md:px-10 mt-32 px-5 section projects-section w-full h-full">
+      <div className="md:flex justify-between items-center">
+
       <button
         className={`p-3 px-10 border text-white mt-10 w-full md:w-96 mb-0 ml-0 md:ml-10 rounded-lg font-semibold text-xl ${
           showProjectForm
@@ -45,16 +48,30 @@ function ProjectList({ token }) {
           </div>
         )}
       </button>
+      {/* added a button to go to dashboard */}
+      <button className="p-3 px-10 border text-white bg-black mt-10 w-full md:w-96 md:mr-10 rounded-lg font-semibold text-xl">
+        <Link to="/dashboard">
+        Go back to Dashboard 
+        </Link>
+      </button>
+      </div>
 
       {showProjectForm && (
         <ProjectForm token={token} setProjects={setProjects} />
       )}
-      <ul className="project-list">
+      {/* styled project list */}
+      <ul className="md:pl-10 md:mt-4 mt-8 md:flex flex-wrap project-list">
         {projects.map((project) => (
-          <li key={project._id} className="project-item">
-            {project.name}
-            <span className="project-description">{project.description}</span>
-          </li>
+          <div
+            key={project._id}
+            className="project-item md:max-w-[30%] h-44 rounded overflow-y-auto shadow-lg m-4 bg-white"
+          >
+            <div className="px-6 py-4">
+              <p className="font-bold text-xl mb-2">{project.name}</p>
+              <p className="text-gray-700 text-base">{project.description}</p>
+            </div>
+          </div>
+         
         ))}
       </ul>
     </div>

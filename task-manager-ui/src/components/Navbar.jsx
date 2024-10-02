@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar({ token, setToken }) {
   return (
-    <nav className="text-3xl p-6 text-white bg-black rounded-md shadow-md flex items-center justify-between fixed z-50 top-16 w-[90vw] right-[50%] translate-x-[50%]">
+    <nav className="md:text-3xl p-6 text-white bg-black rounded-md shadow-md flex items-center justify-between fixed z-50 top-16 w-[90vw] right-[50%] translate-x-[50%]">
       <p className="font-bold">✅ Task Management App</p>
       {token ? (
         <div className="flex text-xl">
