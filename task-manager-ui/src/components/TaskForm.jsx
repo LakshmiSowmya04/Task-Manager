@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const TaskForm = ({ projects, setTasks }) => {
+const TaskForm = ({ token, projects, setTasks }) => {
   const [name, setName] = useState("");
   const [project, setProject] = useState("");
   const [deadline, setDeadline] = useState("");
@@ -12,7 +12,10 @@ const TaskForm = ({ projects, setTasks }) => {
     try {
       const response = await fetch("http://localhost:8000/api/v1/tasks", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify({ name, project, deadline, priority }),
       });
       if (!response.ok) throw new Error("Failed to add task");
@@ -58,7 +61,8 @@ const TaskForm = ({ projects, setTasks }) => {
           ))}
         </select>
 
-        <label className="text-lg md:text-xl">Deadline:</label><br/>  
+        <label className="text-lg md:text-xl">Deadline:</label>
+        <br />
         <input
           className="border border-black mt-3 md:mt-5 p-3 rounded-lg mb-5 w-full"
           type="date"
@@ -66,26 +70,35 @@ const TaskForm = ({ projects, setTasks }) => {
           onChange={(e) => setDeadline(e.target.value)}
         />
 
-<label className="text-lg md:text-xl">Priority:</label><br/>
-        <select 
+        <label className="text-lg md:text-xl">Priority:</label>
+        <br />
+        <select
           className="border border-black mt-3 md:mt-5 p-3 rounded-lg mb-5 w-full"
-        onChange={(e) => setPriority(e.target.value)} value={priority}>
+          onChange={(e) => setPriority(e.target.value)}
+          value={priority}
+        >
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
 
-        <label className="text-lg md:text-xl">  Status:</label><br/>
-        <select 
+        <label className="text-lg md:text-xl"> Status:</label>
+        <br />
+        <select
           className="border border-black mt-3 md:mt-5 p-3 rounded-lg mb-5 w-full"
-        onChange={(e) => setStatus(e.target.value)} value={status}>
+          onChange={(e) => setStatus(e.target.value)}
+          value={status}
+        >
           <option value="Pending">Pending</option>
           <option value="Completed">Completed</option>
         </select>
 
-        <button className="mt-6 md:mt-10 font-semibold text-white border border-green-600 bg-green-600 p-3 w-full rounded-lg text-lg md:text-xl" type="submit">
-        + Add Task
-      </button>
+        <button
+          className="mt-6 md:mt-10 font-semibold text-white border border-green-600 bg-green-600 p-3 w-full rounded-lg text-lg md:text-xl"
+          type="submit"
+        >
+          + Add Task
+        </button>
       </form>
       <ToastContainer />
     </div>

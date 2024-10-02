@@ -3,7 +3,7 @@ services:
     build: ./Task-Management-Backend
     container_name: task-manager-backend
     ports:
-      - "8000:8000"
+      - "5000:8000"
     depends_on:
       - mongo
 
