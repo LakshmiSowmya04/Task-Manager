@@ -3,6 +3,7 @@ import Project from "../models/project-models.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 // import { asyncHandler } from "../utils/asyncHandler.js";
+
 const createTask = async (req, res) => {
     const { name, deadline, priority, project } = req.body;
 
@@ -48,7 +49,7 @@ const createTask = async (req, res) => {
             new ApiResponse(201, project, "Task created successfully")
         );
     } catch (error) {
-        throw new ApiError(400, "Error creating task");
+        throw new ApiError(400, `Error creating task ${error.message}`);
     }
 };
 

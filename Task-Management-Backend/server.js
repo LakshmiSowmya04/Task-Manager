@@ -6,10 +6,13 @@ import authRouter from "./routes/auth-routes.js";
 import { PORT } from "./config/env-config.js";
 import cors from "cors";
 import connectDB from "./db/index.js";
+import cookieParser from 'cookie-parser';
+
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors());
 
 // Connect to MongoDB

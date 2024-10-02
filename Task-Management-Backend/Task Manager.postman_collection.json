@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "282dba7a-9266-4ec3-92f4-becce83cbc65",
+		"name": "Task Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32491304",
+		"_collection_link": "https://task-manager-7662.postman.co/workspace/6e258579-f214-4bf5-8387-9f9a725b6be3/collection/32491304-282dba7a-9266-4ec3-92f4-becce83cbc65?action=share&source=collection_link&creator=32491304"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						},
+						"description": "email and password is required!!!"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"username\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						},
+						"description": "email, name, password are required!!"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "get user project",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "user must be logged in so that user projects will be fetched!!!"
+					},
+					"response": []
+				},
+				{
+					"name": "create project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"pro 1\",\n    \"description\": \"pro1 description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/projects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"projects"
+							]
+						},
+						"description": "name and description are required!!"
+					},
+					"response": []
+				},
+				{
+					"name": "get project by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/projects/66fd659537cf9a2b8cc41a45",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"66fd659537cf9a2b8cc41a45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update project by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/projects/66fd659537cf9a2b8cc41a45",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"projects",
+								"66fd659537cf9a2b8cc41a45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "get task by project id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/tasks/p/66fd667e2f3711db3a1e1353",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"p",
+								"66fd667e2f3711db3a1e1353"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"task 3\",\n    \"priority\": \"High\",\n    \"deadline\": \"2022-02-02\",\n    \"project\": \"66fd667e2f3711db3a1e1353\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get task by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/tasks/t/66fd78797193117495dd76e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"t",
+								"66fd78797193117495dd76e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update task by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/tasks/t/66fd78707193117495dd76e6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"t",
+								"66fd78707193117495dd76e6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete task by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/tasks/t/66fd78797193117495dd76e9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"t",
+								"66fd78797193117495dd76e9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
