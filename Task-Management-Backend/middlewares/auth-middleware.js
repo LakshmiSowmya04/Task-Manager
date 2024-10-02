@@ -4,8 +4,8 @@ import { JWT_SECRET } from '../config/env-config.js';
 const authenticateJWT = (req, res, next) => {
 	// Correctly accessing the cookies
 	const token =
-		req.cookies?.token || req.headers.cookie?.split('token=')[1]?.split(';')[0];
-
+		req.cookies?.token || req.headers.authorization.split(' ')[1] || null;
+	console.log('headers:- ', req.headers.authorization.split(' ')[1]);
 	if (!token) {
 		req.user = null;
 		return res

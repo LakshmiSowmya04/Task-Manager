@@ -62,7 +62,6 @@ const ProjectForm = ({ token, setProjects }) => {
           + Add Project
         </button>
       </form>
-      <ToastContainer />
     </div>
   );
 };

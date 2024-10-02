@@ -33,6 +33,7 @@ function TaskList({ token, setTaskCount }) {
     };
     fetchTasks();
   }, [token]);
+
   useEffect(() => {
     setTaskCount(tasks.filter((task) => task.status !== "Completed").length);
   }, [setTaskCount, tasks]);
@@ -76,7 +77,7 @@ function TaskList({ token, setTaskCount }) {
           />
         )}
         <ul className="task-list">
-          {tasks.map((task) => (
+          {tasks.length > 0 && tasks.map((task) => (
             <li key={task._id}>
               {task.name} - {task.status}
             </li>

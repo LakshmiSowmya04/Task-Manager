@@ -19,16 +19,21 @@ const registerUser = async (req, res) => {
     await newUser.save();
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
+    console.log(error,'error registering user')
+    if (error.code === 11000) {
+      return res.status(400).json({ error: "User already registered" });
+    }
     res.status(400).json({ error: error.message });
   }
 };
 
 const loginUser = async (req, res) => {
+  
   const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({
-      message: "Email and password are required",
+      error: "Email and password are required",
     });
   }
 
@@ -42,20 +47,19 @@ const loginUser = async (req, res) => {
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    return res.status(401).json({ message: "Invalid credentials" });
+    return res.status(401).json({ error: "Invalid credentials" });
   }
 
   const token = jwt.sign({ id: user._id }, JWT_SECRET, {
     expiresIn: "2d",
   });
-
   res
 		.status(200)
 		.cookie('token', token, {
 			sameSite: false,
 			maxAge: 24 * 60 * 60 * 1000
 		})
-		.json({ message: 'Login successful', user: user });
+		.json({ message: 'Login successful', user: user,token: token });
 };
 
 export default {
