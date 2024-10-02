@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Custom thin scrollbar for project-item in the project list component */
+.project-item::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .project-item::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .project-item::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+  }
+  
+  .project-item::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+  
