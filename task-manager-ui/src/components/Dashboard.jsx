@@ -6,12 +6,7 @@ export default function Dashboard({ taskCount, setTaskCount }) {
   const [showTasks, setShowTasks] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      {/* Header Section */}
-      <div className="text-3xl p-6 text-white bg-black rounded-md shadow-md">
-        <p className="font-bold">✅ Task Management App</p>
-      </div>
-
+    <div>
       {/* Content Section  */}
       <div className="mt-24 text-center">
         <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800">
