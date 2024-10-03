@@ -36,7 +36,7 @@ export default function Login({ token, setToken }) {
           >
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your email
@@ -52,7 +52,7 @@ export default function Login({ token, setToken }) {
             </div>
             <div>
               <label
-                for="password"
+                htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Password

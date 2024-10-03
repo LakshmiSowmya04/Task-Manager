@@ -33,7 +33,7 @@ export default function Register() {
           >
             <div>
               <label
-                for="username"
+                htmlFor="username"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your username
@@ -49,7 +49,7 @@ export default function Register() {
             </div>
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your email
@@ -65,7 +65,7 @@ export default function Register() {
             </div>
             <div>
               <label
-                for="password"
+                htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Password
