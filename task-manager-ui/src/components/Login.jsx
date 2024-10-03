@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { backendApi } from "../config";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Login({ setToken }) {
@@ -24,16 +24,6 @@ export default function Login({ setToken }) {
       console.log('data', data)
       setToken(data.token);
       localStorage.setItem("token", data.token);
-
-      await fetch(backendApi + "/api/v1/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${data.token}`,
-        },
-        body: JSON.stringify({ name: "Single Task", description: "Single Task" }),
-      });
-
       navigate("/");
     }else {
       console.log('data', data)
