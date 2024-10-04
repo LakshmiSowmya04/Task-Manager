@@ -11,7 +11,6 @@ export default function Navbar({ token, setToken }) {
             onClick={() => {
               setToken(null);
               console.log(token);
-              
               localStorage.removeItem("token");
             }}
           >

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { backendApi } from "../config";
 const TaskForm = ({ token, projects, setTasks }) => {
   const [name, setName] = useState("");
   const [project, setProject] = useState("");
@@ -10,7 +10,7 @@ const TaskForm = ({ token, projects, setTasks }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/api/v1/tasks", {
+      const response = await fetch(backendApi + "/api/v1/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const TaskForm = ({ token, projects, setTasks }) => {
           required
         >
           <option value="">Select Project</option>
-          {projects.map((proj) => (
+          {projects && projects.map((proj) => (
             <option key={proj._id} value={proj._id}>
               {proj.name}
             </option>
@@ -100,7 +100,6 @@ const TaskForm = ({ token, projects, setTasks }) => {
           + Add Task
         </button>
       </form>
-      <ToastContainer />
     </div>
   );
 };
