@@ -61,7 +61,7 @@ function ProjectList({ token }) {
       )}
       {/* styled project list */}
       <ul className="md:pl-10 md:mt-4 mt-8 md:flex flex-wrap project-list">
-        {projects.map((project) => (
+        {projects && projects.map((project) => (
           <div
             key={project._id}
             className="project-item md:max-w-[30%] h-44 rounded overflow-y-auto shadow-lg m-4 bg-white"

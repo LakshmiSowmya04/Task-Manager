@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { backendApi } from "../config";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const navigate = useNavigate();
 
-  async function handleLogin(e) {
+  async function handleSignUp(e) {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
@@ -16,8 +17,13 @@ export default function Register() {
       },
       body: JSON.stringify({ email, password, username }),
     });
-    if (!response.ok) throw new Error("Failed to login");
-    navigate("/login");
+    // console.log('response',await response.json(),response)
+    if (response.ok) {
+      navigate("/login");
+    }else {
+      const data = await response.json();
+      toast.error(data.error);
+    }
   }
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
@@ -29,11 +35,11 @@ export default function Register() {
           <form
             className="space-y-4 md:space-y-6"
             action="#"
-            onSubmit={handleLogin}
+            onSubmit={handleSignUp}
           >
             <div>
               <label
-                for="username"
+                htmlFor="username"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your username
@@ -49,7 +55,7 @@ export default function Register() {
             </div>
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your email
@@ -65,7 +71,7 @@ export default function Register() {
             </div>
             <div>
               <label
-                for="password"
+                htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Password
