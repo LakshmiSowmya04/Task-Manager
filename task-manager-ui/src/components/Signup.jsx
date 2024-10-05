@@ -10,27 +10,44 @@ export default function Register() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const username = e.target.username.value;
-    const response = await fetch(backendApi + "/api/v1/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, username }),
-    });
-    // console.log('response',await response.json(),response)
-    if (response.ok) {
-      navigate("/login");
-    }else {
+
+    if (!email || !password || !username) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
+    try {
+      const response = await fetch(`${backendApi}/api/v1/user/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password, username }),
+      });
+
       const data = await response.json();
-      toast.error(data.error);
+
+      if (response.ok) {
+        toast.success("Registration successful! Please log in.");
+        navigate("/login");
+      } else if (data.message) {
+        //fix backend user unique email or unique username
+        if (data.message.includes("E11000") && data.message.includes("email")) {
+          toast.error("User with this email already exists.");
+        }
+      }
+    } catch (error) {
+      // Handlin network errors or other unexpected issues
+      toast.error("Something went wrong. Please try again later.");
+      console.error("Sign-up error:", error);
     }
   }
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
       <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 shadow-3xl">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-            Sign in to your account
+          <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+            Create a new account
           </h1>
           <form
             className="space-y-4 md:space-y-6"
@@ -49,7 +66,7 @@ export default function Register() {
                 name="username"
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="name"
+                placeholder="username"
                 required=""
               />
             </div>
@@ -80,6 +97,7 @@ export default function Register() {
                 type="password"
                 name="password"
                 id="password"
+                minLength={6}
                 placeholder="••••••••"
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                 required=""
@@ -93,12 +111,12 @@ export default function Register() {
               Sign Up
             </button>
             <p className="text-sm font-light text-gray-500">
-              Don't have an account yet?{" "}
+              Already have an account?{" "}
               <Link
-                to="/signup"
+                to="/login"
                 className="font-medium text-primary-600 hover:underline"
               >
-                Sign up
+                Sign In
               </Link>
             </p>
           </form>

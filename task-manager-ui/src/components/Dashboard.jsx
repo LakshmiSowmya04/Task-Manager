@@ -9,7 +9,7 @@ export default function Dashboard({ taskCount, setTaskCount }) {
     <div>
       {/* Content Section  */}
       <div className="mt-24 text-center">
-        <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800">
+        <h2 className=" text-2xl sm:text-4xl font-semibold text-gray-800">
           Hello user, you have{" "}
           <span className="text-blue-600">{taskCount}</span> tasks remaining
         </h2>
