@@ -22,14 +22,14 @@ function TaskList({ token, setTaskCount }) {
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch(backendApi + "/api/v1/tasks", {
+      const response = await fetch(backendApi + "/api/v1/tasks/getAllTasks", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       const data = await response.json();
       console.log(data);
-      setTasks(data.data);
+      setTasks(data.tasks);
     };
     fetchTasks();
   }, [token]);
@@ -42,11 +42,10 @@ function TaskList({ token, setTaskCount }) {
     <div className="section tasks-section pt-40 w-full h-full">
       <div className="section2">
         <button
-          className={`p-3 px-10 border text-white mt-10 w-full md:w-96 mb-0 ml-0 md:ml-10 rounded-lg font-semibold text-xl ${
-            showTaskForm
+          className={`p-3 px-10 border text-white mt-10 w-full md:w-96 mb-0 ml-0 md:ml-10 rounded-lg font-semibold text-xl ${showTaskForm
               ? "bg-red-400 border-red-900"
               : "bg-blue-500 border-green-500"
-          } ${showTaskForm ? "close" : null}`}
+            } ${showTaskForm ? "close" : null}`}
           onClick={() => setShowTaskForm(!showTaskForm)}
         >
           {showTaskForm ? (
@@ -77,11 +76,12 @@ function TaskList({ token, setTaskCount }) {
           />
         )}
         <ul className="task-list">
-          {tasks.length > 0 && tasks.map((task) => (
-            <li key={task._id}>
-              {task.name} - {task.status}
-            </li>
-          ))}
+          {tasks.length > 0 &&
+            tasks.map((task) => (
+              <li key={task._id}>
+                {task.name} - {task.project.name} -{task.status}
+              </li>
+            ))}
         </ul>
       </div>
     </div>
