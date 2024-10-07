@@ -14,7 +14,7 @@ const TaskForm = ({ token, projects, setTasks }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
         body: JSON.stringify({ name, project, deadline, priority }),
       });

@@ -53,6 +53,21 @@ const createTask = async (req, res) => {
     }
 };
 
+const getAllTasks = async (req, res) => {
+    if (!req?.user?.id) {
+        return res.status(401).json({
+            message: "Unauthorized",
+        });
+    }
+
+    try {
+        const tasks = await Task.find().populate("project");
+        res.status(200).json(tasks);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 const getTasksByProject = async (req, res) => {
     const { projectId } = req.params;
 
@@ -187,5 +202,6 @@ export default {
     updateTaskById,
     deleteTaskById,
     getTaskById,
+    getAllTasks
     // getTaskByUser,
 };

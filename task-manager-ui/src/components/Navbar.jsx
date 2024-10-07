@@ -10,7 +10,7 @@ export default function Navbar({ token, setToken }) {
             className="font-bold cursor-pointer"
             onClick={() => {
               setToken(null);
-              console.log(token);
+              // console.log(token);
               localStorage.removeItem("token");
             }}
           >

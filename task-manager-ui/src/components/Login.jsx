@@ -18,10 +18,10 @@ export default function Login({ setToken }) {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.json();
+    const {data} = await response.json();
     if (response.ok) {
 
-      console.log('data', data)
+      // console.log('data', data) 
       setToken(data.token);
       localStorage.setItem("token", data.token);
       navigate("/");

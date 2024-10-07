@@ -81,7 +81,7 @@ const loginUser = async (req, res) => {
         successResponse(
           true,
           "Successfully logged in",
-          {},
+          {token},
           StatusCodes.ACCEPTED
         )
       );

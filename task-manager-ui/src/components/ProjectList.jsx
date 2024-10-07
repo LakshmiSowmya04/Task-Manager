@@ -9,10 +9,12 @@ function ProjectList({ token }) {
   useEffect(() => {
     const fetchProjects = async () => {
       const response = await fetch(backendApi + "/api/v1/projects", {
+        method: "GET",
+        credentials: 'include',
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: token,
         },
-      });
+      }).catch(err => console.log(err.data.message));
       const data = await response.json();
       setProjects(data.data);
     };
