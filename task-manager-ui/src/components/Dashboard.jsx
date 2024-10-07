@@ -6,49 +6,31 @@ export default function Dashboard({ taskCount, setTaskCount }) {
   const [showTasks, setShowTasks] = useState(false);
 
   return (
-    <div>
-      {/* Content Section  */}
-      <div className="mt-24 text-center">
-        <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800">
-          Hello user, you have{" "}
-          <span className="text-blue-600">{taskCount}</span> tasks remaining
+    <div className="min-h-screen flex flex-col bg-transparent">
+     
+     <div className="flex justify-center items-center w-full p-4 bg-white rounded-lg border border-gray-300">
+
+  {/* Search Box*/}
+  <input
+    type="text"
+    placeholder="Search..."
+    className="p-2 border border-gray-300 rounded-md w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300 mx-72"
+  />
+
+  {/* Add Task button on the right */}
+  <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+        <Link to="/tasklist" className="flex items-center">
+          + Add Task
+        </Link>
+      </button>
+
+</div>
+
+      {/* Content Section */}
+      <div className="text-center mt-10 ml-64">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800 p-5">
+          Hello user, you have <span className="font-bold">{taskCount}</span> tasks remaining
         </h2>
-
-        <div className="mt-12 space-y-6">
-          {/* Projects Button */}
-          <Link to="/projects">
-            <button
-              className={`transition-colors duration-300 text-lg font-medium px-6 py-3 rounded-md shadow-md border-2 ${
-                showProjects
-                  ? "bg-blue-500 text-white border-blue-500"
-                  : "bg-white text-gray-800 border-gray-300 hover:bg-blue-100"
-              }`}
-              onClick={() => {
-                setShowProjects(true);
-                setShowTasks(false);
-              }}
-            >
-              View Your Projects
-            </button>
-          </Link>
-
-          {/* Tasks Button */}
-          <Link to="/tasks">
-            <button
-              className={`transition-colors duration-300 text-lg font-medium px-6 py-3 rounded-md shadow-md border-2 ${
-                showTasks
-                  ? "bg-blue-500 text-white border-blue-500"
-                  : "bg-white text-gray-800 border-gray-300 hover:bg-blue-100"
-              }`}
-              onClick={() => {
-                setShowTasks(true);
-                setShowProjects(false);
-              }}
-            >
-              View Your Tasks
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );
