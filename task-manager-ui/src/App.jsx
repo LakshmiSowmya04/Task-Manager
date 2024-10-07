@@ -25,7 +25,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 w-screen h-screen">
+    <div className="min-h-screen bg-gray-200 w-screen h-screen">
       <Navbar token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
