@@ -7,6 +7,7 @@ export default function Navbar({ token, setToken }) {
       <p className="font-bold text-black mb-4">Task Manager</p> {/* Font thinner */}
       
       {token ? (
+         frontend_branch_issue#1
         <div className="flex flex-col space-y-4">
           <hr className="border-black w-full block " />
           <br />
@@ -35,6 +36,19 @@ export default function Navbar({ token, setToken }) {
               Logout
             </p>
           </div>
+=======
+        <div className="flex text-xl">
+          <p
+            className="font-bold cursor-pointer"
+            onClick={() => {
+              setToken(null);
+              console.log(token);
+              localStorage.removeItem("token");
+            }}
+          >
+            Logout
+          </p>
+ main
         </div>
       ) : (
         <div className="flex flex-col space-y-4">

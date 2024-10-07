@@ -1,29 +1,37 @@
-import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config/env-config.js';
+import { JWT_SECRET } from "../config/env-config.js";
+import jwt from "jsonwebtoken";
+import errorResponse from "../lib/res/errorResponse.js";
+import { StatusCodes } from "http-status-codes";
+const authCheck = (req, res, next) => {
+  try {
+    // retrieve the token directly from the request's cookies
+    const token = req.cookies.auth_session;
+    // check if token exists
+    if (!token) {
+      return res
+        .status(StatusCodes.UNAUTHORIZED)
+        .json(
+          errorResponse(
+            "Access Denied: No token provided",
+            StatusCodes.UNAUTHORIZED
+          )
+        );
+    }
 
-const authenticateJWT = (req, res, next) => {
-	// Correctly accessing the cookies
-	const token =
-		req.cookies?.token || req.headers.cookie?.split('token=')[1]?.split(';')[0];
+    // Verify the token and extract payload
 
-	if (!token) {
-		req.user = null;
-		return res
-			.status(401)
-			.json({ message: 'Access denied. No token provided.' });
-	}
+    const decoded = jwt.verify(token, JWT_SECRET);
 
-	jwt.verify(token, JWT_SECRET, (err, user) => {
-		if (err) {
-			return res.status(401).json({
-				message: 'Token expired or invalid. Please sign in again.',
-			});
-		}
-		req.user = user;
-		console.log('user:- ', user);
+    // attach the user's id to the request object
+    req.user = decoded.id;
 
-		next();
-	});
+    // If verification is successful, call next() to proceed to the route handler
+    next();
+  } catch (error) {
+    return res
+      .status(StatusCodes.FORBIDDEN)
+      .json(errorResponse("Invalid or expired token", StatusCodes.FORBIDDEN));
+  }
 };
 
-export default authenticateJWT;
+export default authCheck;

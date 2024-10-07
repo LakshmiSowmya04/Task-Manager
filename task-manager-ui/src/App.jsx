@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 import Dashboard from "./components/Dashboard";
@@ -10,6 +11,7 @@ import Notfound from "./components/Notfound";
 import Login from "./components/Login";
 import LoggedOut from "./components/LoggedOut";
 import Register from "./components/Signup";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   const [taskCount, setTaskCount] = useState(0);
@@ -29,7 +31,7 @@ export default function App() {
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route
           path="/login"
-          element={<Login setToken={setToken} token={token} />}
+          element={<Login setToken={setToken} />}
         />
         <Route path="/signup" element={<Register />} />
         <Route
@@ -68,6 +70,7 @@ export default function App() {
         />
         <Route path="*" element={<Notfound />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

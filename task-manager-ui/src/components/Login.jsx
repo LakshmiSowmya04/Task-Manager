@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { backendApi } from "../config";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function Login({ token, setToken }) {
+export default function Login({ setToken }) {
   const navigate = useNavigate();
 
   async function handleLogin(e) {
@@ -12,15 +14,21 @@ export default function Login({ token, setToken }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ email, password }),
     });
-    if (!response.ok) throw new Error("Failed to login");
+
     const data = await response.json();
-    setToken(data.token);
-    localStorage.setItem("token", data.token);
-    navigate("/");
+    if (response.ok) {
+
+      console.log('data', data)
+      setToken(data.token);
+      localStorage.setItem("token", data.token);
+      navigate("/");
+    }else {
+      console.log('data', data)
+      toast.error(data.error);
+    }
   }
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center">
@@ -36,7 +44,7 @@ export default function Login({ token, setToken }) {
           >
             <div>
               <label
-                for="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your email
@@ -52,7 +60,7 @@ export default function Login({ token, setToken }) {
             </div>
             <div>
               <label
-                for="password"
+                htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Password

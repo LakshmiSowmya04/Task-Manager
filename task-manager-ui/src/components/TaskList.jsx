@@ -75,8 +75,13 @@ function TaskList({ token, setTaskCount }) {
             setTaskCount={setTaskCount}
           />
         )}
+ frontend_branch_issue#1
         <ul className="task-list mt-5">
           {tasks.map((task) => (
+=======
+        <ul className="task-list">
+          {tasks.length > 0 && tasks.map((task) => (
+ main
             <li key={task._id}>
               {task.name} - {task.status}
             </li>
