@@ -11,7 +11,7 @@ function TaskList({ token, setTaskCount }) {
     const fetchProjects = async () => {
       const response = await fetch(backendApi + "/api/v1/projects", {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization:  token,
         },
       });
       const data = await response.json();
@@ -23,13 +23,14 @@ function TaskList({ token, setTaskCount }) {
   useEffect(() => {
     const fetchTasks = async () => {
       const response = await fetch(backendApi + "/api/v1/tasks", {
+        method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization:  token,
         },
       });
       const data = await response.json();
       console.log(data);
-      setTasks(data.data);
+      setTasks(data);
     };
     fetchTasks();
   }, [token]);
@@ -81,7 +82,7 @@ function TaskList({ token, setTaskCount }) {
             <li key={task._id}>
               {task.name} - {task.status}
             </li>
-          ))}
+          ))}`
         </ul>
       </div>
     </div>
