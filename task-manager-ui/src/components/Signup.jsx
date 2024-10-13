@@ -30,7 +30,7 @@ export default function Register() {
       <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 shadow-3xl">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-            Sign in to your account
+            Create your account
           </h1>
           <form
             className="space-y-4 md:space-y-6"
@@ -93,12 +93,12 @@ export default function Register() {
               Sign Up
             </button>
             <p className="text-sm font-light text-gray-500">
-              Don't have an account yet?{" "}
+              Already have an account? {" "}
               <Link
-                to="/signup"
+                to="/Login"
                 className="font-medium text-primary-600 hover:underline"
               >
-                Sign up
+                Sign in
               </Link>
             </p>
           </form>
