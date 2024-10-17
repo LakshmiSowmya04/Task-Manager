@@ -1,37 +1,65 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Add_icon from ".././assets/icons/add-icon.svg";
+import Default_user_icon from ".././assets/icons/default-user-icon.svg";
+import Navbar from "./Navbar";
 
-export default function Dashboard({ taskCount, setTaskCount }) {
+export default function Dashboard({
+  taskCount,
+  setTaskCount,
+  token,
+  setToken,
+}) {
   const [showProjects, setShowProjects] = useState(false);
   const [showTasks, setShowTasks] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-transparent">
-     
-     <div className="flex justify-center items-center w-full p-4 bg-white rounded-lg border border-gray-300">
+    <>
+      <div className="p-0 sm:p-2 flex w-full gap-3">
+        <Navbar token={token} setToken={setToken} />
+        <div className="min-h-screen flex flex-col w-full items-center bg-transparent">
+          <div className="flex justify-between items-center w-full p-2 bg-white rounded-3xl border border-gray-300">
+            {/* Search Box*/}
+            <div className="flex min-w-[50%]">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="px-3 py-1 border placeholder:text-xs border-gray-300 bg-gray-medium rounded-3xl w-full focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300"
+              />
+            </div>
 
-  {/* Search Box*/}
-  <input
-    type="text"
-    placeholder="Search..."
-    className="p-2 border border-gray-300 rounded-md w-1/3 focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300 mx-72"
-  />
+            {/* Add Task button on the right */}
+            <div className="flex gap-4">
+              <button className="bg-primary text-white py-1 px-2 text-sm rounded-xl border-black-all hover:bg-blue-600 transition duration-300">
+                <Link to="/tasklist" className="flex items-center gap-1">
+                  <img
+                    src={Add_icon}
+                    className="aspect-square w-6"
+                    alt="add icon"
+                  />
+                  <span>Add Task</span>
+                </Link>
+              </button>
 
-  {/* Add Task button on the right */}
-  <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
-        <Link to="/tasklist" className="flex items-center">
-          + Add Task
-        </Link>
-      </button>
+              <div className="rounded-full flex cursor-pointer">
+                <img
+                  src={Default_user_icon}
+                  className="aspect-square w-9"
+                  alt="user icon"
+                />
+              </div>
+            </div>
+          </div>
 
-</div>
-
-      {/* Content Section */}
-      <div className="text-center mt-10 ml-64">
-        <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800 p-5">
-          Hello user, you have <span className="font-bold">{taskCount}</span> tasks remaining
-        </h2>
+          {/* Content Section */}
+          <div className="text-center">
+            <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800 p-5">
+              Hello user, you have{" "}
+              <span className="font-bold">{taskCount}</span> tasks remaining
+            </h2>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

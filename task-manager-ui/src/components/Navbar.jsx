@@ -1,41 +1,54 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaTachometerAlt, FaProjectDiagram, FaTasks, FaSignOutAlt } from "react-icons/fa"; // Import the icons
+import Dashboard_icon from ".././assets/icons/dashboard-icon.svg"
+import Project_icon from ".././assets/icons/project-icon.svg"
+import Task_icon from ".././assets/icons/task-icon.svg"
+import Notification_icon from ".././assets/icons/notification-icon.svg"
+import Logout_icon from ".././assets/icons/logout-icon.svg"
+import useResponsive from "../hooks/useResponsive";
+import { MdMenu } from "react-icons/md";
+
 
 export default function Navbar({ token, setToken }) {
+  const {isMobile} = useResponsive();
   const handleLogout = () => {
     setToken(null);
     localStorage.removeItem("token");
   };
 
   return (
-    <nav className="md:text-3xl p-8 text-gray-700 rounded-md shadow-md flex flex-col items-start fixed z-50 top-0 left-0 h-full w-72 bg-white backdrop-blur-md">
-      <p className="font-bold text-black mb-4">Task Manager</p>
+    <nav className="md:text-3xl  text-gray-700 rounded-lg shadow-md flex flex-col gap-3 items-start w-max min-w-[14vw] h-full bg-white backdrop-blur-md lg:ml-0  sm: ml-20vw">
+      <p className=" text-black p-2 text-2xl w-full font-inria-serif flex justify-center border-bottom-black">{isMobile ? <MdMenu /> : "Task Manager"}</p>
       
       {token ? (
-        <div className="flex flex-col space-y-4">
-          <hr className="border-black w-full block" />
-          <Link to="/dashboard" className="font-light flex items-center transition-transform duration-300 hover:scale-105">
-            <FaTachometerAlt className="mr-2" /> Dashboard
-          </Link>
-          <Link to="/projects" className="font-light flex items-center transition-transform duration-300 hover:scale-105">
-            <FaProjectDiagram className="mr-2" /> Projects
-          </Link>
-          <Link to="/tasks" className="font-light flex items-center transition-transform duration-300 hover:scale-105">
-            <FaTasks className="mr-2" /> Tasks
-          </Link>
-          <div className="mt-auto flex items-center">
+        <div className="flex flex-col justify-between h-full w-full py-2 space-y-4 font-inria-serif">
+          <div className="flex flex-col gap-3">
+          <NavLink to="/dashboard"  className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
+           <img src={Dashboard_icon} className="aspect-square w-6" alt="dashboard icon" /> <span>Dashboard</span> 
+          </NavLink>
+          <NavLink to="/project" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
+           <img src={Project_icon} className="aspect-square w-6" alt="project icon" /> <span>Project</span> 
+          </NavLink>
+           <NavLink to="/task" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
+           <img src={Task_icon} className="aspect-square w-6" alt="task icon" /> <span>Task</span> 
+          </NavLink>
+           <NavLink to="/notification" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
+           <img src={Notification_icon} className="aspect-square w-6" alt="notification icon" /> <span>Notification</span> 
+          </NavLink>
+          </div>
+          <div className="border-top-black w-full flex items-center p-2">
             <p
-              className="font-light cursor-pointer flex items-center transition-transform duration-300 hover:scale-105"
+              className="flex text-base justify-center gap-3 cursor-pointer"
               onClick={handleLogout}
             >
-              <FaSignOutAlt className="mr-2" /> Logout
+              <img src={Logout_icon} className="aspect-square w-6" alt="logout icon" /> <span> Logout </span>
             </p>
           </div>
         </div>
       ) : (
         <div className="flex flex-col space-y-4">
-          <Link to="/login" className="font-light">Login</Link>
-          <Link to="/signup" className="font-light">Signup</Link>
+          <NavLink to="/login" className="font-light">Login</NavLink>
+          <NavLink to="/signup" className="font-light">Signup</NavLink>
         </div>
       )}
     </nav>

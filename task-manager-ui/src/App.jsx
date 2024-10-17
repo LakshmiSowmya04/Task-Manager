@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import LoggedOut from "./components/LoggedOut";
 import Register from "./components/Signup";
 import { ToastContainer } from "react-toastify";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   const [taskCount, setTaskCount] = useState(0);
@@ -25,8 +26,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-200 w-screen h-screen">
-      <Navbar token={token} setToken={setToken} />
+    <div className="min-h-screen flex min-w-full bg-gray-light w-full h-screen  ">
+      
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route
@@ -37,11 +38,13 @@ export default function App() {
         <Route
           path="/dashboard"
           element={
-            <Dashboard
-              setToken={setToken}
-              token={token}
-              taskCount={taskCount}
-            />
+            <ProtectedRoute token={token}>
+              <Dashboard
+                taskCount={taskCount}
+                token={token}
+                setToken={setToken}
+              />
+            </ProtectedRoute>
           }
         />
         <Route

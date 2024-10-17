@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Inria+Serif:300,300italic,regular,italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,3 +21,27 @@
     background-color: #555;
   }
   
+.font-inria-serif{
+  font-family: "Inria-Serif", sans-serif;
+}
+
+.font-inter{
+  font-family: "Inter", sans-serif;
+}
+
+.border-bottom-black{
+  border-bottom: 1px solid #000;
+}
+
+.border-top-black{
+  border-top: 1px solid #000;
+}
+
+.border-black-all{
+  border: 1px solid #000;
+}
+
+.link.active{
+  border-left: 3px solid #FFE046;
+  background-color: rgba(252, 231, 124, .2);
+}
