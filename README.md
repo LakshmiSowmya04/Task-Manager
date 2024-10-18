@@ -92,5 +92,5 @@ If you'd like to contribute to just the frontend:
 - **Don't forget to attach screenshots** when submitting your pull request.
 
 ---
-
+happy coding :)
 Join us in building and improving this powerful Task Management tool! 🎉
