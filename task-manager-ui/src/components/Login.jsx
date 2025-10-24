@@ -57,7 +57,11 @@ export default function Login({ setToken }) {
             Welcome Back!
           </h1>
 
-          {error && <div className="error bg-red-200 p-1 border-l-red-500 border-s-4">Please check email or password</div>}
+          {error && (
+            <div className="bg-red-100 border-l-4 border-red-500 text-red-700 px-4 py-2 rounded-md shadow-sm">
+              Please check email or password
+            </div>
+          )}
           
           <form
             className="space-y-5 md:space-y-4"
@@ -65,52 +69,38 @@ export default function Login({ setToken }) {
             onSubmit={handleLogin}
           >
             <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Email
-              </label>
               <input
-                type="email"
                 name="email"
                 id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full px-4 py-2"
+                type="email"
+                autoFocus
+                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-xl block w-full px-4 py-2 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-shadow duration-300 ease-in-out"
                 placeholder="name@company.com"
+              />
+            </div>
+            <div>
+              <input
+                name="password"
+                id="password"
+                placeholder="password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-xl block w-full px-4 py-2 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-shadow duration-300 ease-in-out"
                 required=""
               />
             </div>
             <div>
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-xl focus:ring-primary-600 focus:border-primary-600 block w-full px-4 py-2"
-                required=""
-              />
+              <Link to={"/reset-password"} className="relative inline-block text-blue-400 mt-3 before:content-[''] before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:bg-blue-400 before:transition-all before:duration-300 before:ease-in-out hover:before:w-full">Forgot password?</Link>
             </div>
-            <div className="text-blue-400 mt-3">
-            <Link to={"/reset-password"}>Forgot password?</Link>
-            </div>
-            
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-blue-600 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-3xl text-sm px-5 py-2 text-center"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-3xl text-sm px-5 py-2 text-center transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300"
             >
-              Login
-            </button>
+  Login
+</button>
             <p className="text-sm font-light text-center text-gray-500">
               Don't have an account yet?{" "}
               <Link
                 to="/signup"
-                className="font-medium text-primary-600 hover:underline"
+                className="relative inline-block font-medium text-primary-600 before:content before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:bg-gray-500 before:transition-all before:duration-300 before:ease-in-out hover:before:w-full"
               >
                 Sign up
               </Link>

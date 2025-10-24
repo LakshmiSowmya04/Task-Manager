@@ -29,7 +29,7 @@ export default function Register() {
     <div className="w-screen h-screen flex flex-col items-center justify-center">
       <div className="w-full bg-white rounded-lg md:mt-0 sm:max-w-md xl:p-0 shadow-3xl">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+          <h1 className="text-2xl md:text-3xl font-semibold leading-snug text-gray-800 text-center">
             Create your account
           </h1>
           <form
@@ -38,65 +38,44 @@ export default function Register() {
             onSubmit={handleSignUp}
           >
             <div>
-              <label
-                htmlFor="username"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Your username
-              </label>
               <input
-                type="username"
                 name="username"
                 id="username"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-shadow duration-300 ease-in-out"
+                placeholder="your name"
                 required=""
               />
             </div>
             <div>
-              <label
-                htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Your email
-              </label>
               <input
-                type="email"
                 name="email"
                 id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="name@company.com"
+                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-shadow duration-300 ease-in-out"
+                placeholder="xyz@gmail.com"
                 required=""
               />
             </div>
             <div>
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Password
-              </label>
               <input
-                type="password"
                 name="password"
                 id="password"
-                placeholder="••••••••"
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                placeholder="password"
+                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-shadow duration-300 ease-in-out"
                 required=""
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-blue-400 hover:bg-blue-600 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center shadow-md hover:shadow-xl transition-all duration-300 ease-in-out"
             >
               Sign Up
             </button>
-            <p className="text-sm font-light text-gray-500">
+            <p className="text-sm font-light text-gray-500 ">
               Already have an account? {" "}
               <Link
                 to="/Login"
-                className="font-medium text-primary-600 hover:underline"
+                className="relative inline-block font-medium text-primary-600 before:content before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:bg-gray-500 before:transition-all before:duration-300 before:ease-in-out hover:before:w-full"
               >
                 Sign in
               </Link>
