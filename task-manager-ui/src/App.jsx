@@ -19,21 +19,18 @@ export default function App() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setToken(token);
+    const savedtoken = localStorage.getItem("token");
+    if (savedtoken) {
+      setToken(savedtoken);
     }
   }, []);
 
   return (
-    <div className="min-h-screen flex min-w-full bg-gray-light w-full h-screen  ">
+    <div className="flex flex-col min-h-screen bg-gray-light">
       
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" />} />
-        <Route
-          path="/login"
-          element={<Login setToken={setToken} />}
-        />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login setToken={setToken} />}/>
         <Route path="/signup" element={<Register />} />
         <Route
           path="/dashboard"

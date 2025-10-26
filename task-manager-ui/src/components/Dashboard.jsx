@@ -18,35 +18,37 @@ export default function Dashboard({
       <div className="p-0 sm:p-2 flex w-full gap-3">
         <Navbar token={token} setToken={setToken} />
         <div className="min-h-screen flex flex-col w-full items-center bg-transparent">
-          <div className="flex justify-between items-center w-full p-2 bg-white rounded-3xl border border-gray-300">
-            {/* Search Box*/}
-            <div className="flex min-w-[50%]">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="px-3 py-1 border placeholder:text-xs border-gray-300 bg-gray-medium rounded-3xl w-full focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300"
-              />
-            </div>
-
-            {/* Add Task button on the right */}
-            <div className="flex gap-4">
-              <button className="bg-primary text-white py-1 px-2 text-sm rounded-xl border-black-all hover:bg-blue-600 transition duration-300">
-                <Link to="/tasklist" className="flex items-center gap-1">
-                  <img
-                    src={Add_icon}
-                    className="aspect-square w-6"
-                    alt="add icon"
-                  />
-                  <span>Add Task</span>
-                </Link>
-              </button>
-
-              <div className="rounded-full flex cursor-pointer">
-                <img
-                  src={Default_user_icon}
-                  className="aspect-square w-9"
-                  alt="user icon"
+          <div className="w-full max-w-6xl">
+            <div className="flex justify-between items-center w-full p-2 bg-white rounded-3xl border border-gray-300">
+              {/* Search Box*/}
+              <div className="flex min-w-[50%]">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="px-3 py-1 border placeholder:text-xs border-gray-300 bg-gray-medium rounded-3xl w-full focus:outline-none focus:ring-2 focus:ring-blue-600 transition duration-300"
                 />
+              </div>
+
+              {/* Add Task button on the right */}
+              <div className="flex gap-4">
+                <button className="bg-primary text-white py-1 px-2 text-sm rounded-xl border-black-all hover:bg-blue-600 transition duration-300">
+                  <Link to="/tasklist" className="flex items-center gap-1">
+                    <img
+                      src={Add_icon}
+                      className="aspect-square w-6"
+                      alt="add icon"
+                    />
+                    <span>Add Task</span>
+                  </Link>
+                </button>
+
+                <div className="rounded-full flex cursor-pointer">
+                  <img
+                    src={Default_user_icon}
+                    className="aspect-square w-9"
+                    alt="user icon"
+                  />
+                </div>
               </div>
             </div>
           </div>
