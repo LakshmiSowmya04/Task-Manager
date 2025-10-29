@@ -1,54 +1,100 @@
 import { NavLink } from "react-router-dom";
-import { FaTachometerAlt, FaProjectDiagram, FaTasks, FaSignOutAlt } from "react-icons/fa"; // Import the icons
-import Dashboard_icon from ".././assets/icons/dashboard-icon.svg"
-import Project_icon from ".././assets/icons/project-icon.svg"
-import Task_icon from ".././assets/icons/task-icon.svg"
-import Notification_icon from ".././assets/icons/notification-icon.svg"
-import Logout_icon from ".././assets/icons/logout-icon.svg"
+import { FaTachometerAlt, FaProjectDiagram, FaTasks, FaSignOutAlt } from "react-icons/fa";
+import Dashboard_icon from "../assets/icons/dashboard-icon.svg";
+import Project_icon from "../assets/icons/project-icon.svg";
+import Task_icon from "../assets/icons/task-icon.svg";
+import Notification_icon from "../assets/icons/notification-icon.svg";
+import Logout_icon from "../assets/icons/logout-icon.svg";
 import useResponsive from "../hooks/useResponsive";
 import { MdMenu } from "react-icons/md";
-
+import ThemeToggle from "./ThemeToggle"; 
 
 export default function Navbar({ token, setToken }) {
-  const {isMobile} = useResponsive();
+  const { isMobile } = useResponsive();
   const handleLogout = () => {
     setToken(null);
     localStorage.removeItem("token");
   };
 
   return (
-    <nav className="md:text-3xl  text-gray-700 rounded-lg shadow-md flex flex-col gap-3 items-start w-max min-w-[14vw] h-full bg-white backdrop-blur-md lg:ml-0  sm: ml-20vw">
-      <p className=" text-black p-2 text-2xl w-full font-inria-serif flex justify-center border-bottom-black">{isMobile ? <MdMenu /> : "Task Manager"}</p>
-      
+    <nav className="mt-6 ml-6 flex flex-col h-full bg-white dark:bg-gray-800 shadow-lg p-4 rounded-lg w-64">
+      {/* Top section with title and theme toggle */}
+      <div className="flex justify-between items-center mb-6">
+        <p className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
+          {isMobile ? <MdMenu /> : "Task Manager"}
+        </p>
+        <ThemeToggle />
+      </div>
+
+      {/* Navigation Links */}
       {token ? (
-        <div className="flex flex-col justify-between h-full w-full py-2 space-y-4 font-inria-serif">
-          <div className="flex flex-col gap-3">
-          <NavLink to="/dashboard"  className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
-           <img src={Dashboard_icon} className="aspect-square w-6" alt="dashboard icon" /> <span>Dashboard</span> 
+        <div className="flex flex-col space-y-4">
+          {/* Dashboard Link */}
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              `${isActive ? "bg-blue-500 text-white" : "text-gray-700 dark:text-gray-200"} p-3 rounded-lg flex items-center gap-3 hover:bg-blue-200 dark:hover:bg-blue-600 transition-colors duration-200`
+            }
+          >
+            <img src={Dashboard_icon} className="w-6 h-6" alt="dashboard icon" />
+            <span>Dashboard</span>
           </NavLink>
-          <NavLink to="/project" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
-           <img src={Project_icon} className="aspect-square w-6" alt="project icon" /> <span>Project</span> 
+
+          {/* Project Link */}
+          <NavLink
+            to="/project"
+            className={({ isActive }) =>
+              `${isActive ? "bg-blue-500 text-white" : "text-gray-700 dark:text-gray-200"} p-3 rounded-lg flex items-center gap-3 hover:bg-blue-200 dark:hover:bg-blue-600 transition-colors duration-200`
+            }
+          >
+            <img src={Project_icon} className="w-6 h-6" alt="project icon" />
+            <span>Project</span>
           </NavLink>
-           <NavLink to="/task" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
-           <img src={Task_icon} className="aspect-square w-6" alt="task icon" /> <span>Task</span> 
+
+          {/* Task Link */}
+          <NavLink
+            to="/task"
+            className={({ isActive }) =>
+              `${isActive ? "bg-blue-500 text-white" : "text-gray-700 dark:text-gray-200"} p-3 rounded-lg flex items-center gap-3 hover:bg-blue-200 dark:hover:bg-blue-600 transition-colors duration-200`
+            }
+          >
+            <img src={Task_icon} className="w-6 h-6" alt="task icon" />
+            <span>Task</span>
           </NavLink>
-           <NavLink to="/notification" className={({isActive})=>`${isActive && "link active"} p-2 font-light flex w-full text-base items-center gap-2 `}>
-           <img src={Notification_icon} className="aspect-square w-6" alt="notification icon" /> <span>Notification</span> 
+
+          {/* Notification Link */}
+          <NavLink
+            to="/notification"
+            className={({ isActive }) =>
+              `${isActive ? "bg-blue-500 text-white" : "text-gray-700 dark:text-gray-200"} p-3 rounded-lg flex items-center gap-3 hover:bg-blue-200 dark:hover:bg-blue-600 transition-colors duration-200`
+            }
+          >
+            <img src={Notification_icon} className="w-6 h-6" alt="notification icon" />
+            <span>Notification</span>
           </NavLink>
-          </div>
-          <div className="border-top-black w-full flex items-center p-2">
-            <p
-              className="flex text-base justify-center gap-3 cursor-pointer"
-              onClick={handleLogout}
-            >
-              <img src={Logout_icon} className="aspect-square w-6" alt="logout icon" /> <span> Logout </span>
-            </p>
-          </div>
         </div>
       ) : (
         <div className="flex flex-col space-y-4">
-          <NavLink to="/login" className="font-light">Login</NavLink>
-          <NavLink to="/signup" className="font-light">Signup</NavLink>
+          {/* Login and Signup Links */}
+          <NavLink to="/login" className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors duration-200">
+            Login
+          </NavLink>
+          <NavLink to="/signup" className="text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors duration-200">
+            Signup
+          </NavLink>
+        </div>
+      )}
+
+      {/* Logout Button */}
+      {token && (
+        <div className="mt-auto border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p
+            className="text-gray-700 dark:text-gray-200 cursor-pointer flex items-center gap-3 hover:text-red-500"
+            onClick={handleLogout}
+          >
+            <img src={Logout_icon} className="w-6 h-6" alt="logout icon" />
+            Logout
+          </p>
         </div>
       )}
     </nav>
