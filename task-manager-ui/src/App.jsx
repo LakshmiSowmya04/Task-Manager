@@ -45,7 +45,7 @@ export default function App() {
           }
         />
         <Route
-          path="/projects"
+          path="/project"
           element={
             token ? (
               <ProjectList setToken={setToken} token={token} />
@@ -55,7 +55,7 @@ export default function App() {
           }
         />
         <Route
-          path="/tasks"
+          path="/task"
           element={
             token ? (
               <TaskList
