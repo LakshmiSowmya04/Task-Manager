@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { backendApi } from "../config";
 import { toast } from "react-toastify";
 import ThemeToggle from "./ThemeToggle";
+import axios from "axios";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -12,17 +13,20 @@ export default function Register() {
     const password = e.target.password.value;
     const username = e.target.username.value;
 
-    const response = await fetch(backendApi + "/api/v1/user/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, username }),
-    });
-
-    if (response.ok) {
+    try {
+      const response = await axios.post(backendApi + "/api/v1/user/register",{
+          email,
+          password,
+          username,
+        }
+      );
       navigate("/login");
-    } else {
-      const data = await response.json();
-      toast.error(data.error);
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.error || "Something went wrong");
+      } else {
+        toast.error("Network error");
+      }
     }
   }
 
