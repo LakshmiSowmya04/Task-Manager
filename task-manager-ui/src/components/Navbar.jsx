@@ -84,19 +84,6 @@ export default function Navbar({ token, setToken }) {
           </NavLink>
         </div>
       )}
-
-      {/* Logout Button */}
-      {token && (
-        <div className="mt-auto border-t border-gray-200 dark:border-gray-700 pt-4">
-          <p
-            className="text-gray-700 dark:text-gray-200 cursor-pointer flex items-center gap-3 hover:text-red-500"
-            onClick={handleLogout}
-          >
-            <img src={Logout_icon} className="w-6 h-6" alt="logout icon" />
-            Logout
-          </p>
-        </div>
-      )}
     </nav>
   );
 }
