@@ -7,6 +7,10 @@ import Navbar from "./Navbar";
 export default function Dashboard({ taskCount, setTaskCount, token, setToken }) {
   const [showProjects, setShowProjects] = useState(false);
   const [showTasks, setShowTasks] = useState(false);
+  const handleLogout = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className="flex min-h-screen w-full bg-gradient-to-br from-gray-50 via-blue-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all">
@@ -54,7 +58,9 @@ export default function Dashboard({ taskCount, setTaskCount, token, setToken }) 
                   <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                     Settings
                   </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
+                  <li 
+                    onClick={handleLogout}
+                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer hover:bg-red-100, text-red-600">
                     Logout
                   </li>
                 </ul>
