@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
+// ci/cd required 
 import Dashboard from "./components/Dashboard";
 import ProjectList from "./components/ProjectList";
 import TaskList from "./components/TaskList";
