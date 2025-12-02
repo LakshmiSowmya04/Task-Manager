@@ -1,32 +1,32 @@
-import React, { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { backendApi } from "../config";
+import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { backendApi } from '../config'
 const ProjectForm = ({ token, setProjects }) => {
-  const [name, setName] = useState("");
-  const [desc, setDesc] = useState("");
+  const [name, setName] = useState('')
+  const [desc, setDesc] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await fetch(backendApi + "/api/v1/projects", {
-        method: "POST",
+      const response = await fetch(backendApi + '/api/v1/projects', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: token,
         },
         body: JSON.stringify({ name, description: desc }),
-      });
-      if (!response.ok) throw new Error("Failed to add project");
-      const newProject = await response.json();
-      setProjects((prev) => [...prev, newProject]);
-      setName("");
-      setDesc("");
-      toast.success("Project added successfully!");
+      })
+      if (!response.ok) throw new Error('Failed to add project')
+      const newProject = await response.json()
+      setProjects((prev) => [...prev, newProject])
+      setName('')
+      setDesc('')
+      toast.success('Project added successfully!')
     } catch (error) {
-      toast.error("Failed to add project");
+      toast.error('Failed to add project')
     }
-  };
+  }
 
   return (
     <div className="ml-0 md:ml-10 m-5 md:m-20 md:mt-2 mt-2 border border-gray-300 shadow-xl p-4 md:p-6 w-full md:w-96 rounded-2xl ">
@@ -63,7 +63,7 @@ const ProjectForm = ({ token, setProjects }) => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectForm;
+export default ProjectForm

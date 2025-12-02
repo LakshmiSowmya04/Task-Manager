@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export default function LoggedOut() {
   return (
@@ -8,8 +8,11 @@ export default function LoggedOut() {
         role="alert"
       >
         <span className="font-medium">Warning!</span> You are not logged in,
-        please <Link className="underline" to={"/login"}>login</Link>
+        please{' '}
+        <Link className="underline" to={'/login'}>
+          login
+        </Link>
       </div>
     </div>
-  );
+  )
 }
