@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
-import { backendApi } from "../config";
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
+import { backendApi } from '../config'
 const TaskForm = ({ token, projects, setTasks }) => {
-  const [name, setName] = useState("");
-  const [project, setProject] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [priority, setPriority] = useState("Low");
-  const [status, setStatus] = useState("Pending"); // New status field
+  const [name, setName] = useState('')
+  const [project, setProject] = useState('')
+  const [deadline, setDeadline] = useState('')
+  const [priority, setPriority] = useState('Low')
+  const [status, setStatus] = useState('Pending') // New status field
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const response = await fetch(backendApi + "/api/v1/tasks", {
-        method: "POST",
+      const response = await fetch(backendApi + '/api/v1/tasks', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: token,
         },
         body: JSON.stringify({ name, project, deadline, priority }),
-      });
-      if (!response.ok) throw new Error("Failed to add task");
-      const newTask = await response.json();
-      setTasks((prev) => [...prev, newTask]);
-      setName("");
-      setProject("");
-      setDeadline("");
-      setPriority("Low");
-      setStatus("Pending");
-      toast.success("Task added successfully!");
+      })
+      if (!response.ok) throw new Error('Failed to add task')
+      const newTask = await response.json()
+      setTasks((prev) => [...prev, newTask])
+      setName('')
+      setProject('')
+      setDeadline('')
+      setPriority('Low')
+      setStatus('Pending')
+      toast.success('Task added successfully!')
     } catch (error) {
-      toast.error("Failed to add task");
+      toast.error('Failed to add task')
     }
-  };
+  }
   return (
     <div className="ml-0 md:ml-10 m-5 md:m-20 md:mt-2 mt-2 border border-gray-300 shadow-xl p-4 md:p-6 w-full md:w-96 rounded-2xl ">
       <form onSubmit={handleSubmit}>
@@ -54,11 +54,12 @@ const TaskForm = ({ token, projects, setTasks }) => {
           required
         >
           <option value="">Select Project</option>
-          {projects && projects.map((proj) => (
-            <option key={proj._id} value={proj._id}>
-              {proj.name}
-            </option>
-          ))}
+          {projects &&
+            projects.map((proj) => (
+              <option key={proj._id} value={proj._id}>
+                {proj.name}
+              </option>
+            ))}
         </select>
 
         <label className="text-lg md:text-xl">Deadline:</label>
@@ -101,7 +102,7 @@ const TaskForm = ({ token, projects, setTasks }) => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default TaskForm;
+export default TaskForm

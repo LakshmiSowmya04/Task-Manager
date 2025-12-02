@@ -1,54 +1,54 @@
-import { Link, useNavigate } from "react-router-dom";
-import { backendApi } from "../config";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Login_hero from "../assets/login-hero.svg";
-import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { Link, useNavigate } from 'react-router-dom'
+import { backendApi } from '../config'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import Login_hero from '../assets/login-hero.svg'
+import { useState } from 'react'
+import ThemeToggle from './ThemeToggle'
 // import { set } from "mongoose";
 
 export default function Login({ setToken }) {
-  const navigate = useNavigate();
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+  const [error, setError] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   async function handleLogin(e) {
-    e.preventDefault();
-    setError(false);
-    setLoading(true);
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    e.preventDefault()
+    setError(false)
+    setLoading(true)
+    const email = e.target.email.value
+    const password = e.target.password.value
 
     try {
-      const response = await fetch(backendApi + "/api/v1/user/login", {
-        method: "POST",
+      const response = await fetch(backendApi + '/api/v1/user/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-      });
-      
-      const Data = await response.json();
+      })
+
+      const Data = await response.json()
       console.log(response)
-      
+
       if (response.ok) {
-        let { data } = Data;
-        setToken(data.token);
-        localStorage.setItem("token", data.token);
-        toast.success("Login successful!");
-        navigate("/dashboard");
+        let { data } = Data
+        setToken(data.token)
+        localStorage.setItem('token', data.token)
+        toast.success('Login successful!')
+        navigate('/dashboard')
       } else {
-        setError(true);
-        toast.error(Data.error || "Login failed. Please try again.");
+        setError(true)
+        toast.error(Data.error || 'Login failed. Please try again.')
       }
-    } catch (err) { 
-        setError(true);
-        toast.error("Network error. Please try again later.");
-        console.error(err);
-      } finally {
-      setLoading(false);
-      }
-    } 
+    } catch (err) {
+      setError(true)
+      toast.error('Network error. Please try again later.')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="min-w-screen h-screen flex w-full bg-white dark:bg-gray-900 transition-colors duration-500">
@@ -101,7 +101,7 @@ export default function Login({ setToken }) {
                   type="password"
                   placeholder="Password"
                   className="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-xl block w-full px-4 py-2 focus:ring-primary-600 focus:border-primary-600 focus:shadow-md focus:outline-none transition-all duration-300 ease-in-out"
-                  required = {true}
+                  required={true}
                 />
               </div>
 
@@ -116,8 +116,10 @@ export default function Login({ setToken }) {
 
               <button
                 type="submit"
-                className={`w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-3xl text-sm px-5 py-2 text-center transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300 ${loading ? "bg-blue-400 cursor-not-allowed opacity-70"
-                        : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                className={`w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium rounded-3xl text-sm px-5 py-2 text-center transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300 ${
+                  loading
+                    ? 'bg-blue-400 cursor-not-allowed opacity-70'
+                    : 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white'
                 }`}
               >
                 {loading ? (
@@ -145,12 +147,12 @@ export default function Login({ setToken }) {
                     Logging in...
                   </span>
                 ) : (
-                  "Login"
+                  'Login'
                 )}
               </button>
 
               <p className="text-sm font-light text-center text-gray-500 dark:text-gray-400 transition-colors duration-500">
-                Don't have an account yet?{" "}
+                Don't have an account yet?{' '}
                 <Link
                   to="/signup"
                   className="relative inline-block font-medium text-primary-600 dark:text-primary-400 before:content before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:bg-gray-500 dark:before:bg-gray-400 before:transition-all before:duration-300 hover:before:w-full"
@@ -163,5 +165,5 @@ export default function Login({ setToken }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

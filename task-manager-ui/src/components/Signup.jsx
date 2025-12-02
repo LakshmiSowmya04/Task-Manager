@@ -1,31 +1,30 @@
-import { Link, useNavigate } from "react-router-dom";
-import { backendApi } from "../config";
-import { toast } from "react-toastify";
-import ThemeToggle from "./ThemeToggle";
-import axios from "axios";
+import { Link, useNavigate } from 'react-router-dom'
+import { backendApi } from '../config'
+import { toast } from 'react-toastify'
+import ThemeToggle from './ThemeToggle'
+import axios from 'axios'
 
 export default function Register() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   async function handleSignUp(e) {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const username = e.target.username.value;
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+    const username = e.target.username.value
 
     try {
-      const response = await axios.post(backendApi + "/api/v1/user/register",{
-          email,
-          password,
-          username,
-        }
-      );
-      navigate("/login");
+      const response = await axios.post(backendApi + '/api/v1/user/register', {
+        email,
+        password,
+        username,
+      })
+      navigate('/login')
     } catch (error) {
       if (error.response) {
-        toast.error(error.response.data.error || "Something went wrong");
+        toast.error(error.response.data.error || 'Something went wrong')
       } else {
-        toast.error("Network error");
+        toast.error('Network error')
       }
     }
   }
@@ -40,7 +39,11 @@ export default function Register() {
             Create your account
           </h1>
 
-          <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleSignUp}>
+          <form
+            className="space-y-4 md:space-y-6"
+            action="#"
+            onSubmit={handleSignUp}
+          >
             <div>
               <input
                 name="username"
@@ -78,7 +81,7 @@ export default function Register() {
             </button>
 
             <p className="text-sm font-light text-gray-500 dark:text-gray-400 transition-colors duration-500 text-center">
-              Already have an account?{" "}
+              Already have an account?{' '}
               <Link
                 to="/login"
                 className="relative inline-block font-medium text-primary-600 dark:text-primary-400 before:content before:absolute before:bottom-0 before:left-1/2 before:-translate-x-1/2 before:w-0 before:h-[2px] before:bg-gray-500 dark:before:bg-gray-400 before:transition-all before:duration-300 hover:before:w-full"
@@ -90,5 +93,5 @@ export default function Register() {
         </div>
       </div>
     </div>
-  );
+  )
 }

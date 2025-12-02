@@ -1,16 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Add_icon from "../assets/icons/add-icon.svg";
-import Default_user_icon from "../assets/icons/default-user-icon.svg";
-import Navbar from "./Navbar";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Add_icon from '../assets/icons/add-icon.svg'
+import Default_user_icon from '../assets/icons/default-user-icon.svg'
+import Navbar from './Navbar'
 
-export default function Dashboard({ taskCount, setTaskCount, token, setToken }) {
-  const [showProjects, setShowProjects] = useState(false);
-  const [showTasks, setShowTasks] = useState(false);
+export default function Dashboard({
+  taskCount,
+  setTaskCount,
+  token,
+  setToken,
+}) {
+  const [showProjects, setShowProjects] = useState(false)
+  const [showTasks, setShowTasks] = useState(false)
   const handleLogout = () => {
-    setToken(null);
-    localStorage.removeItem("token");
-  };
+    setToken(null)
+    localStorage.removeItem('token')
+  }
 
   return (
     <div className="flex min-h-screen w-full bg-gradient-to-br from-gray-50 via-blue-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-all">
@@ -21,7 +26,6 @@ export default function Dashboard({ taskCount, setTaskCount, token, setToken }) 
       <div className="flex flex-col flex-1 items-center py-6 px-4 sm:px-8">
         {/* Header / Search Section */}
         <div className="w-full max-w-4xl bg-white dark:bg-gray-800 shadow-lg rounded-3xl border border-gray-200 dark:border-gray-700 p-4 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all">
-          
           {/* Search Input */}
           <div className="flex w-full sm:w-1/2 items-center bg-gray-100 dark:bg-gray-700 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-blue-500 transition-all">
             <input
@@ -58,9 +62,10 @@ export default function Dashboard({ taskCount, setTaskCount, token, setToken }) 
                   <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
                     Settings
                   </li>
-                  <li 
+                  <li
                     onClick={handleLogout}
-                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer hover:bg-red-100, text-red-600">
+                    className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer hover:bg-red-100, text-red-600"
+                  >
                     Logout
                   </li>
                 </ul>
@@ -72,13 +77,14 @@ export default function Dashboard({ taskCount, setTaskCount, token, setToken }) 
         {/* Greeting Section */}
         <div className="w-full max-w-6xl mt-8 text-center">
           <h2 className="text-2xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-            👋 Hello <span className="text-blue-600 dark:text-blue-400">User</span>,
+            👋 Hello{' '}
+            <span className="text-blue-600 dark:text-blue-400">User</span>,
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-2 text-lg">
-            You currently have{" "}
+            You currently have{' '}
             <span className="font-bold text-blue-600 dark:text-blue-400">
               {taskCount}
-            </span>{" "}
+            </span>{' '}
             tasks remaining. Let's get things done!
           </p>
         </div>
@@ -113,5 +119,5 @@ export default function Dashboard({ taskCount, setTaskCount, token, setToken }) 
         </div>
       </div>
     </div>
-  );
+  )
 }

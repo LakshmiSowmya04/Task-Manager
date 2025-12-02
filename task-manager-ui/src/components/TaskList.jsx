@@ -1,42 +1,42 @@
-import React, { useState, useEffect } from "react";
-import TaskForm from "./TaskForm";
-import { backendApi } from "../config";
+import React, { useState, useEffect } from 'react'
+import TaskForm from './TaskForm'
+import { backendApi } from '../config'
 
 function TaskList({ token, setTaskCount }) {
-  const [showTaskForm, setShowTaskForm] = useState(false);
-  const [tasks, setTasks] = useState([]);
-  const [projects, setProjects] = useState([]);
+  const [showTaskForm, setShowTaskForm] = useState(false)
+  const [tasks, setTasks] = useState([])
+  const [projects, setProjects] = useState([])
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch(backendApi + "/api/v1/projects", {
+      const response = await fetch(backendApi + '/api/v1/projects', {
         headers: {
           Authorization: token,
         },
-      });
-      const data = await response.json();
-      setProjects(data.data);
-    };
-    fetchProjects();
-  }, [token]);
+      })
+      const data = await response.json()
+      setProjects(data.data)
+    }
+    fetchProjects()
+  }, [token])
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch(backendApi + "/api/v1/tasks", {
-        method: "GET",
+      const response = await fetch(backendApi + '/api/v1/tasks', {
+        method: 'GET',
         headers: {
           Authorization: token,
         },
-      });
-      const data = await response.json();
-      setTasks(data);
-    };
-    fetchTasks();
-  }, [token]);
+      })
+      const data = await response.json()
+      setTasks(data)
+    }
+    fetchTasks()
+  }, [token])
 
   useEffect(() => {
-    setTaskCount(tasks.filter((task) => task.status !== "Completed").length);
-  }, [setTaskCount, tasks]);
+    setTaskCount(tasks.filter((task) => task.status !== 'Completed').length)
+  }, [setTaskCount, tasks])
 
   return (
     <div className="flex pt-0 pl-16 w-full h-full">
@@ -44,8 +44,8 @@ function TaskList({ token, setTaskCount }) {
         <button
           className={`p-3 px-10 border text-white mt-10 w-full rounded-lg font-semibold text-xl ${
             showTaskForm
-              ? "bg-red-400 border-red-900"
-              : "bg-blue-500 border-green-500"
+              ? 'bg-red-400 border-red-900'
+              : 'bg-blue-500 border-green-500'
           }`}
           onClick={() => setShowTaskForm(!showTaskForm)}
         >
@@ -88,7 +88,7 @@ function TaskList({ token, setTaskCount }) {
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default TaskList;
+export default TaskList
