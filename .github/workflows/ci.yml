@@ -1,0 +1,35 @@
+name: Task Manager UI CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: task-manager-ui
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      - name: Lint code (ESLint)
+        run: npm run lint
+
+      - name: Build project
+        run: npm run build
